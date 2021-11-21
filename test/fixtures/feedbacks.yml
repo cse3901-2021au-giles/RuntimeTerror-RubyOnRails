@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fid: 1
+  team_id: 1
+  course_id: 1
+  giveuser_id: 1
+  receiveuser_id: 1
+  done: false
+  body: MyText
+
+two:
+  fid: 1
+  team_id: 1
+  course_id: 1
+  giveuser_id: 1
+  receiveuser_id: 1
+  done: false
+  body: MyText

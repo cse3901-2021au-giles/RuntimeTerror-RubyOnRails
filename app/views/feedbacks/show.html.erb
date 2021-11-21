@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fid:</strong>
+  <%= @feedback.fid %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @feedback.team_id %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @feedback.course_id %>
+</p>
+
+<p>
+  <strong>Giveuser:</strong>
+  <%= @feedback.giveuser_id %>
+</p>
+
+<p>
+  <strong>Receiveuser:</strong>
+  <%= @feedback.receiveuser_id %>
+</p>
+
+<p>
+  <strong>Done:</strong>
+  <%= @feedback.done %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @feedback.body %>
+</p>
+
+<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
+<%= link_to 'Back', feedbacks_path %>
