@@ -16,8 +16,13 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @user.type %>
+  <strong>Role:</strong>
+  <%= @user.role %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

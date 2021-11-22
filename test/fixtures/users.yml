@@ -4,10 +4,12 @@ one:
   email: MyString
   fname: MyString
   lname: MyString
-  type: 1
+  role: 1
+  password: MyString
 
 two:
   email: MyString
   fname: MyString
   lname: MyString
-  type: 1
+  role: 1
+  password: MyString
