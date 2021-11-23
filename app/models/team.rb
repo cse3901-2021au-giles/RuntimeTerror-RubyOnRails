@@ -3,5 +3,5 @@ class Team < ApplicationRecord
     # Useless?: foreign_key: 'course_id'
 
   has_many :TeamsUsers
-  has_many :users, :through => :TeamsUsers, :source => :users
+  has_many :users, :through => :TeamsUsers, :source => :user
 end

@@ -8,13 +8,13 @@ class CreateFeedbacks < ActiveRecord::Migration[6.1]
       t.text :body
 
       #Let rails know these are foreign keys
-      # t.references :giveuser_id
-      # t.references :receiveuser_id
+      t.references :giveuser_id, foreign_key: { to_table: :users}
+      t.references :receiveuser_id, foreign_key: { to_table: :users}
 
 
       # Potentially incorrect
-      t.integer :giveuser_id, :references => "user"
-      t.integer :receiveuser_id, :references=> "user"
+      # t.integer :giveuser_id, :references => "user"
+      # t.integer :receiveuser_id, :references=> "user"
 
       t.timestamps
     end
