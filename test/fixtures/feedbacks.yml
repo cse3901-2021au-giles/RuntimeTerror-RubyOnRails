@@ -4,8 +4,8 @@ one:
   fid: 1
   team_id: 1
   course_id: 1
-  giveuser_id: 1
-  receiveuser_id: 1
+  giveuser: 1
+  receiveuser: 1
   done: false
   body: MyText
 
@@ -13,7 +13,7 @@ two:
   fid: 1
   team_id: 1
   course_id: 1
-  giveuser_id: 1
-  receiveuser_id: 1
+  giveuser: 1
+  receiveuser: 1
   done: false
   body: MyText

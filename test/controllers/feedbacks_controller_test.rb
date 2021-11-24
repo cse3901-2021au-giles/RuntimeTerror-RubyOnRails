@@ -17,7 +17,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create feedback" do
     assert_difference('Feedback.count') do
-      post feedbacks_url, params: { feedback: { body: @feedback.body, course_id: @feedback.course_id, done: @feedback.done, fid: @feedback.fid, giveuser_id: @feedback.giveuser_id, receiveuser_id: @feedback.receiveuser_id, team_id: @feedback.team_id } }
+      post feedbacks_url, params: { feedback: { body: @feedback.body, course_id: @feedback.course_id, done: @feedback.done, fid: @feedback.fid, giveuser: @feedback.giveuser, receiveuser: @feedback.receiveuser, team_id: @feedback.team_id } }
     end
 
     assert_redirected_to feedback_url(Feedback.last)
@@ -34,7 +34,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update feedback" do
-    patch feedback_url(@feedback), params: { feedback: { body: @feedback.body, course_id: @feedback.course_id, done: @feedback.done, fid: @feedback.fid, giveuser_id: @feedback.giveuser_id, receiveuser_id: @feedback.receiveuser_id, team_id: @feedback.team_id } }
+    patch feedback_url(@feedback), params: { feedback: { body: @feedback.body, course_id: @feedback.course_id, done: @feedback.done, fid: @feedback.fid, giveuser: @feedback.giveuser, receiveuser: @feedback.receiveuser, team_id: @feedback.team_id } }
     assert_redirected_to feedback_url(@feedback)
   end
 

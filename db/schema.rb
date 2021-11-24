@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_034706) do
+ActiveRecord::Schema.define(version: 2021_11_23_163830) do
 
   create_table "courses", force: :cascade do |t|
     t.string "course_name"
@@ -33,14 +33,14 @@ ActiveRecord::Schema.define(version: 2021_11_23_034706) do
     t.integer "fid"
     t.integer "team_id"
     t.integer "course_id"
+    t.integer "giveuser_id", null: false
+    t.integer "receiveuser_id", null: false
     t.boolean "done"
     t.text "body"
-    t.integer "giveuser_id_id"
-    t.integer "receiveuser_id_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["giveuser_id_id"], name: "index_feedbacks_on_giveuser_id_id"
-    t.index ["receiveuser_id_id"], name: "index_feedbacks_on_receiveuser_id_id"
+    t.index ["giveuser_id"], name: "index_feedbacks_on_giveuser_id"
+    t.index ["receiveuser_id"], name: "index_feedbacks_on_receiveuser_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -70,6 +70,6 @@ ActiveRecord::Schema.define(version: 2021_11_23_034706) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "feedbacks", "users", column: "giveuser_id_id"
-  add_foreign_key "feedbacks", "users", column: "receiveuser_id_id"
+  add_foreign_key "feedbacks", "users", column: "giveuser_id"
+  add_foreign_key "feedbacks", "users", column: "receiveuser_id"
 end
