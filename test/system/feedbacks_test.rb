@@ -18,8 +18,8 @@ class FeedbacksTest < ApplicationSystemTestCase
     fill_in "Course", with: @feedback.course_id
     check "Done" if @feedback.done
     fill_in "Fid", with: @feedback.fid
-    fill_in "Giveuser", with: @feedback.giveuser_id
-    fill_in "Receiveuser", with: @feedback.receiveuser_id
+    fill_in "Giveuser", with: @feedback.giveuser
+    fill_in "Receiveuser", with: @feedback.receiveuser
     fill_in "Team", with: @feedback.team_id
     click_on "Create Feedback"
 
@@ -35,8 +35,8 @@ class FeedbacksTest < ApplicationSystemTestCase
     fill_in "Course", with: @feedback.course_id
     check "Done" if @feedback.done
     fill_in "Fid", with: @feedback.fid
-    fill_in "Giveuser", with: @feedback.giveuser_id
-    fill_in "Receiveuser", with: @feedback.receiveuser_id
+    fill_in "Giveuser", with: @feedback.giveuser
+    fill_in "Receiveuser", with: @feedback.receiveuser
     fill_in "Team", with: @feedback.team_id
     click_on "Update Feedback"
 

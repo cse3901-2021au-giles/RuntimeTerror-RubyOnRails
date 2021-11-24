@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :teams
   resources :courses
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'application#hello'
-  get '/login', to: 'sessions#new'
+  # root 'application#hello'
+  # get '/login', to: 'sessions#new'
 end

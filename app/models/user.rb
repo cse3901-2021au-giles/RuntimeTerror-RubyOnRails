@@ -9,7 +9,9 @@ class User < ApplicationRecord
   has_many :teams, :through => :TeamsUsers, :source => :team
   #end
 
-  has_many :feedbacks, class_name: "Feedback", foreign_key: "feedback_id"
+  # Relation with feedback
+  has_many :giveuser_feedbacks, class_name: 'Feedback', foreign_key: 'giveuser_id'
+  has_many :receiveuser_feedbacks, class_name: 'Feedback', foreign_key: 'receiveuser_id'
   
   before_save { email.downcase! }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
