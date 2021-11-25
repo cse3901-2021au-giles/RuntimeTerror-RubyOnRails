@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'sessions/adminView'
+  get '/signup', to: "users#new"
   root 'sessions#new'
+
+
   resources :users
   resources :feedbacks
   resources :teams

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>P6Rails</title>
+    <title><%= yield(:title)%> - RuntimeTerror Peer Eval</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,8 @@
   </head>
 
   <body>
+    <!--<nav>Home</nav>-->
+    <h1> <%= yield(:title)%> </h1>
     <%= yield %>
   </body>
 </html>
