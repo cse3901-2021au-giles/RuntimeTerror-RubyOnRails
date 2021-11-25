@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    render html: "Home"
   end
   
   def create
