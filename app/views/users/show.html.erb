@@ -25,5 +25,47 @@
   <%= @user.password %>
 </p>
 
+<p>
+  <strong>Teams:</strong>
+  <%@teams.each do |team|%>
+  <p> <%= team.team_name%> </p>
+  <%end%>
+</p>
+
+<p>
+  <strong>Teammates:</strong>
+  <%@teams.each do |team|%>
+    <%team.users.each do |member|%>
+    <p><%= member.fname + " " + member.lname%></p>
+
+    <%end%>
+  <%end%>
+</p>
+
+<br>
+
+<p>
+  <strong> Feedback tasks:</strong>
+</p>
+  <table>
+  <tr>
+    <th>Course</th>
+    <th>Team</th>
+    <th>Feedback Number</th>
+    <th>Receiving User</th>
+  </tr>
+  <%@teams.each do |team|%>
+    <%@giveuser_feedbacks.each do |guf|%>
+      <tr>
+        <td> <%= Course.find(guf.course_id).course_name%> </td>
+        <td> <%= Team.find(guf.team_id).team_name%> </td>
+        <td> <%= guf.fid%> </td>
+        <td> <%= User.find(guf.receiveuser_id).fname + " " + User.find(guf.receiveuser_id).lname %> </td>
+      </tr>
+
+    <%end%>
+  <%end%>
+  </table>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -2,6 +2,13 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   #layout 'application'
 
+  def dashboard
+    @courses = Course.find(@user.courses.ids)
+    @teams = Team.find(@user.teams.ids)
+    @giveuser_feedbacks = Feedback.find(@user.giveuser_feedbacks.ids)
+    @receiveuser_feedback = Feedback.find(@user.receiveuser_feedbacks.ids)
+  end
+
   # GET /users
   # GET /users.json
   def index
@@ -11,6 +18,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @courses = Course.find(@user.courses.ids)
+    @teams = Team.find(@user.teams.ids)
+    @giveuser_feedbacks = Feedback.find(@user.giveuser_feedbacks.ids)
+
+    @receiveuser_feedback = Feedback.find(@user.receiveuser_feedbacks.ids)
   end
 
   # GET /users/new
