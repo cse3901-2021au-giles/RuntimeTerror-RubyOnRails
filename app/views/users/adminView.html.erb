@@ -1,0 +1,82 @@
+<p id="notice"><%= notice %></p>
+
+<!-- Lets layout know what the title is-->
+<% content_for :title, "Admin"%>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @user.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @user.lname %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password %>
+</p>
+
+<br>
+
+<p>
+  <strong> Courses: </strong>
+</p>
+  <%@courses.each do |course|%>
+    <p> <%= course.course_name%> <p>
+    <p> <strong>Teams in <%= course.course_name%>:</strong> </p>
+
+    <%course.teams.each do |tc|%>
+      <p> <%= tc.team_name%> </p>
+    <%end%>
+
+  <%end%>
+
+<p>
+  <strong>Teammates:</strong>
+  <%@teams.each do |team|%>
+    <%team.users.each do |member|%>
+    <p><%= member.fname + " " + member.lname%></p>
+
+    <%end%>
+  <%end%>
+</p>
+
+<br>
+
+<p>
+  <strong> Feedback tasks:</strong>
+</p>
+  <table>
+  <tr>
+    <th>Course</th>
+    <th>Team</th>
+    <th>Feedback Number</th>
+    <th>Receiving User</th>
+  </tr>
+  <%@teams.each do |team|%>
+    <%@giveuser_feedbacks.each do |guf|%>
+      <tr>
+        <td> <%= Course.find(guf.course_id).course_name%> </td>
+        <td> <%= Team.find(guf.team_id).team_name%> </td>
+        <td> <%= guf.fid%> </td>
+        <td> <%= User.find(guf.receiveuser_id).fname + " " + User.find(guf.receiveuser_id).lname %> </td>
+      </tr>
+
+    <%end%>
+  <%end%>
+  </table>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

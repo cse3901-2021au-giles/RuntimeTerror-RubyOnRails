@@ -17,12 +17,21 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
+  # User Profile dashboard
   def show
     @courses = Course.find(@user.courses.ids)
     @teams = Team.find(@user.teams.ids)
     @giveuser_feedbacks = Feedback.find(@user.giveuser_feedbacks.ids)
+    #@giveuser_feedbacks.order(created_at: :desc)
 
     @receiveuser_feedback = Feedback.find(@user.receiveuser_feedbacks.ids)
+
+    # Display student or admin view depending on the role
+    if @user.role == 1
+      render "studentView"
+    elsif @user.role == 0
+      render "adminView"
+    end
   end
 
   # GET /users/new
