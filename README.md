@@ -24,3 +24,33 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Getting started 
+To get started with the app, first make sure you have ruby version '2.6.6' installed by running:
+```
+$ruby -v
+```
+If version '2.6.6' is not installed, run:
+```
+rbenv install 2.6.6
+```
+
+Then, clone the rep and then install the needed gems:
+```
+$ bundle install --without production
+```
+
+Next, migrate the database:
+```
+$ rails db:migrate
+```
+
+Run the test suite to verify everything is working correctly:
+```
+$ rails test
+```
+
+If the suite passes, you can run the app in a local server:
+```
+$ rails server
+```
