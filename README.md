@@ -28,11 +28,11 @@ Things you may want to cover:
 ## Getting started 
 To get started with the app, first make sure you have ruby version '2.6.6' installed by running:
 ```
-$ruby -v
+$ ruby -v
 ```
 If version '2.6.6' is not installed, run:
 ```
-rbenv install 2.6.6
+$ rbenv install 2.6.6
 ```
 
 Then, clone the rep and then install the needed gems:
