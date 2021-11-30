@@ -13,7 +13,14 @@ class User < ApplicationRecord
 
   # Ensure different users don't use the same email
   validates_uniqueness_of :email
+
+  # Keep roles between 0 and 1
+  validates :role, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 1}
+
+  # Validate password
+  validates :password, presence: true, length: {minimum: 6}
   
+  # Validate Email
   before_save { email.downcase! }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
