@@ -21,7 +21,8 @@ class UsersController < ApplicationController
   def show
     @courses = Course.find(@user.courses.ids)
     @teams = Team.find(@user.teams.ids)
-    @giveuser_feedbacks = Feedback.find(@user.giveuser_feedbacks.ids)
+    @user_feedbackGroups = Feedback.group(:fid, :team_id, :course_id).where(giveuser_id: @user.id)
+    @giveuser_feedbacks = Feedback.order(created_at: :desc).find(@user.giveuser_feedbacks.ids)
     #@giveuser_feedbacks.order(created_at: :desc)
 
     @receiveuser_feedback = Feedback.find(@user.receiveuser_feedbacks.ids)
@@ -82,6 +83,12 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def getName(user)
+    return user.fname + " " + user.lname
+  end
+
+  helper_method :getName
 
   private
     # Use callbacks to share common setup or constraints between actions.

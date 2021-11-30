@@ -13,6 +13,7 @@
       <th>Receiving user</th>
       <th>Done</th>
       <th>Body</th>
+      <th>Score</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -27,6 +28,7 @@
         <td><%= User.find(feedback.receiveuser_id).fname %> <%= User.find(feedback.receiveuser_id).lname%></td>
         <td><%= feedback.done %></td>
         <td><%= feedback.body %></td>
+        <td><%= feedback.score %></td>
         <td><%= link_to 'Show', feedback %></td>
         <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>
         <td><%= link_to 'Destroy', feedback, method: :delete, data: { confirm: 'Are you sure?' } %></td>

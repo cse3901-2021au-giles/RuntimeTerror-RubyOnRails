@@ -10,7 +10,7 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @user.fname + " " + @user.lname%>
+  <%= getName(@user)%>
 </p>
 
 <p>
@@ -18,24 +18,19 @@
   <%= @user.role %>
 </p>
 
+<!-- Delete Later-->
 <p>
   <strong>Password:</strong>
   <%= @user.password %>
 </p>
 
 <p>
-  <strong>Teams:</strong>
+  <h2>Teams:</h2>
   <%@teams.each do |team|%>
-  <p> <%= team.team_name%> </p>
-  <%end%>
-</p>
-
-<p>
-  <strong>Teammates:</strong>
-  <%@teams.each do |team|%>
+    <h3> <%= team.team_name%> </h3>
+    <h4>Members:</h4>
     <%team.users.each do |member|%>
-    <p><%= member.fname + " " + member.lname%></p>
-
+      <p><%= getName(member)%></p>
     <%end%>
   <%end%>
 </p>
@@ -50,18 +45,30 @@
     <th>Course</th>
     <th>Team</th>
     <th>Feedback Number</th>
-    <th>Receiving User</th>
-  </tr>
-  <%@teams.each do |team|%>
-    <%@giveuser_feedbacks.each do |guf|%>
-      <tr>
-        <td> <%= Course.find(guf.course_id).course_name%> </td>
-        <td> <%= Team.find(guf.team_id).team_name%> </td>
-        <td> <%= guf.fid%> </td>
-        <td> <%= User.find(guf.receiveuser_id).fname + " " + User.find(guf.receiveuser_id).lname %> </td>
-      </tr>
+    <th>Action</th>
 
-    <%end%>
+  </tr>
+   
+  <!--
+  <%@giveuser_feedbacks.each do |guf|%>
+    <tr>
+      <td> <%= Course.find(guf.course_id).course_name%> </td>
+      <td> <%= Team.find(guf.team_id).team_name%> </td>
+      <td> <%= guf.fid%> </td>
+      <td> <%= User.find(guf.receiveuser_id).fname + " " + User.find(guf.receiveuser_id).lname %> </td>
+      <td> <%= guf.created_at%> </td>
+    </tr>
+
+  <%end%>
+  -->
+  
+  <%@user_feedbackGroups.each do |guf|%>
+    <tr>
+      <td> <%= Course.find(guf.course_id).course_name%> </td>
+      <td> <%= Team.find(guf.team_id).team_name%> </td>
+      <td> <%= guf.fid%> </td>
+      <td>View<td>
+    </tr>
   <%end%>
   </table>
 

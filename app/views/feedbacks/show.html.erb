@@ -35,6 +35,11 @@
   <%= @feedback.body %>
 </p>
 
+<p>
+  <strong>Score:</strong>
+  <%= @feedback.score %>
+</p>
+
 
 <%= link_to 'Edit', edit_feedback_path(@feedback) %> |
 <%= link_to 'Back', feedbacks_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_163830) do
+ActiveRecord::Schema.define(version: 2021_11_30_023155) do
 
   create_table "courses", force: :cascade do |t|
     t.string "course_name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_163830) do
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "score"
     t.index ["giveuser_id"], name: "index_feedbacks_on_giveuser_id"
     t.index ["receiveuser_id"], name: "index_feedbacks_on_receiveuser_id"
   end
