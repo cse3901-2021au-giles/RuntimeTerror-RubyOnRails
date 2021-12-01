@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
   root to: "main#index"
   get '/about', to: 'about#index'
+  get '/signup', to: "registrations#new"
+  post '/signup', to: "registrations#create"
+  get '/login', to: "sessions#new"
+  post '/login', to: "sessions#create"
+  delete '/logout', to: "sessions#destroy"
+  get '/password', to: "passwords#edit", as: :edit_password
+  patch '/password', to: "passwords#update"
 
-  get '/signup', to: "users#new"
   get '/users/:id/courses', to: "users#editcourses", as: :edit_courses
 
 
