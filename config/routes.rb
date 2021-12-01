@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/signup', to: "users#new"
+  get '/users/:id/courses', to: "users#editcourses", as: :edit_courses
   root 'sessions#new'
 
 

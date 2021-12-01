@@ -77,6 +77,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_courses
+    @user = User.find(params[:id])
+    render 'edit_courses'
+  end
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
