@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_050004) do
+ActiveRecord::Schema.define(version: 2021_12_01_092554) do
 
   create_table "checkpoints", force: :cascade do |t|
     t.integer "team_id"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2021_12_01_050004) do
     t.string "fname"
     t.string "lname"
     t.integer "role"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
