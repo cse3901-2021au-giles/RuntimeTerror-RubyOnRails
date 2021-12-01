@@ -15,7 +15,11 @@
 
 <p>
   <strong>Role:</strong>
-  <%= @user.role %>
+  <%if @user.role==0%>
+    Admin
+  <%else %>
+    Student
+  <% end%>
 </p>
 
 <!-- Delete Later-->
