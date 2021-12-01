@@ -19,8 +19,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   # User Profile dashboard
   def show
-    #useless?
-    @user = User.find(params[:id])
 
     @courses = Course.find(@user.courses.ids)
     @teams = Team.find(@user.teams.ids)
@@ -78,7 +76,7 @@ class UsersController < ApplicationController
   end
 
   def edit_courses
-    @user = User.find(params[:id])
+    set_user
     render 'edit_courses'
   end
 
@@ -101,7 +99,9 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      if session[:user_id]
+        @user = User.find_by(id: session[:user_id])
+      end
     end
 
     # Only allow a list of trusted parameters through.

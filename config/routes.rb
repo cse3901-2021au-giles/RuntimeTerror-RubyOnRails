@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   get '/password', to: "passwords#edit", as: :edit_password
   patch '/password', to: "passwords#update"
 
-  get '/users/:id/courses', to: "users#editcourses", as: :edit_courses
-
+  get '/dashboard', to: "users#show", as: :view_user
+  get '/courses', to: "users#edit_courses", as: :edit_courses
 
   resources :users
   resources :feedbacks
