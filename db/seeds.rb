@@ -46,17 +46,23 @@
 #   ])
 
 #   feedbacks = Feedback.create([
-#                   {id: "1", fid: "1", team_id: "1", course_id: "1", giveuser_id: "1", receiveuser_id: "2", done: "false", body: "text"},
-#                   {id: "2", fid: "1", team_id: "1", course_id: "1", giveuser_id: "1", receiveuser_id: "3", done: "false", body: "text2"},
-#                   {id: "3", fid: "1", team_id: "1", course_id: "1", giveuser_id: "1", receiveuser_id: "4", done: "false", body: "text3"},
-#                   {id: "4", fid: "1", team_id: "1", course_id: "1", giveuser_id: "2", receiveuser_id: "1", done: "false", body: "text4"},
-#                   {id: "5", fid: "1", team_id: "1", course_id: "1", giveuser_id: "2", receiveuser_id: "3", done: "false", body: "text5"},
-#                   {id: "6", fid: "1", team_id: "1", course_id: "1", giveuser_id: "2", receiveuser_id: "4", done: "false", body: "text6"},
-#                   {id: "7", fid: "1", team_id: "1", course_id: "1", giveuser_id: "3", receiveuser_id: "1", done: "false", body: "text7"},
-#                   {id: "8", fid: "1", team_id: "1", course_id: "1", giveuser_id: "3", receiveuser_id: "2", done: "false", body: "text8"},
-#                   {id: "9", fid: "1", team_id: "1", course_id: "1", giveuser_id: "3", receiveuser_id: "4", done: "false", body: "text9"},
-#                   {id: "10", fid: "1", team_id: "1", course_id: "1", giveuser_id: "4", receiveuser_id: "1", done: "false", body: "text10"},
-#                   {id: "11", fid: "1", team_id: "1", course_id: "1", giveuser_id: "4", receiveuser_id: "2", done: "false", body: "text11"},
-#                   {id: "12", fid: "1", team_id: "1", course_id: "1", giveuser_id: "4", receiveuser_id: "3", done: "false", body: "text12"},
-#                   {id: "13", fid: "1", team_id: "2", course_id: "1", giveuser_id: "3", receiveuser_id: "6", done: "false", body: "text13"},
+#                   {id: "1", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "1", receiveuser_id: "2", done: "false", body: "text"},
+#                   {id: "2", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "1", receiveuser_id: "3", done: "false", body: "text2"},
+#                   {id: "3", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "1", receiveuser_id: "4", done: "false", body: "text3"},
+#                   {id: "4", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "2", receiveuser_id: "1", done: "false", body: "text4"},
+#                   {id: "5", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "2", receiveuser_id: "3", done: "false", body: "text5"},
+#                   {id: "6", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "2", receiveuser_id: "4", done: "false", body: "text6"},
+#                   {id: "7", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "3", receiveuser_id: "1", done: "false", body: "text7"},
+#                   {id: "8", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "3", receiveuser_id: "2", done: "false", body: "text8"},
+#                   {id: "9", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "3", receiveuser_id: "4", done: "false", body: "text9"},
+#                   {id: "10", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "4", receiveuser_id: "1", done: "false", body: "text10"},
+#                   {id: "11", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "4", receiveuser_id: "2", done: "false", body: "text11"},
+#                   {id: "12", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "4", receiveuser_id: "3", done: "false", body: "text12"},
+#                   {id: "13", fid: "1", team_id: "2", checkpoint_id: "2", giveuser_id: "3", receiveuser_id: "6", done: "false", body: "text13"},
+#   ])
+
+#  Checkpoint.create([
+#                  {id:"1", team_id:"1", checkpoint_name:"Project 2", due_date:"2021-11-30 11:59:59.00000 +000"},
+#                  {id:"2", team_id:"2", checkpoint_name:"Tech Project", due_date:"2021-12-08 11:59:59.00000 +000"},
+#                  {id:"3", team_id:"3", checkpoint_name:"Tech Project", due_date:"2021-12-08 11:59:59.00000 +000"}
 #   ])

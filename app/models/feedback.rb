@@ -1,5 +1,8 @@
 class Feedback < ApplicationRecord
 
+  # Ensure feedback belongs to checkpoint
+  belongs_to :checkpoint
+
   # Clarify foreign keys giveuser and receiveuser point to user
   belongs_to :giveuser, class_name: 'User'
   belongs_to :receiveuser, class_name: 'User'

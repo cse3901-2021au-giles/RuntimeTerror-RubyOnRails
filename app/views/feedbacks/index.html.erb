@@ -8,7 +8,7 @@
     <tr>
       <th>Fid</th>
       <th>Team</th>
-      <th>Course</th>
+      <th>Checkpoint</th>
       <th>Giving user</th>
       <th>Receiving user</th>
       <th>Done</th>
@@ -23,7 +23,7 @@
       <tr>
         <td><%= feedback.fid %></td>
         <td><%= Team.find(feedback.team_id).team_name %></td>
-        <td><%= Course.find(feedback.course_id).course_name %></td>
+        <td><%= Checkpoint.find(feedback.checkpoint_id).checkpoint_name %></td>
         <td><%= User.find(feedback.giveuser_id).fname %> <%= User.find(feedback.giveuser_id).lname%></td>
         <td><%= User.find(feedback.receiveuser_id).fname %> <%= User.find(feedback.receiveuser_id).lname%></td>
         <td><%= feedback.done %></td>

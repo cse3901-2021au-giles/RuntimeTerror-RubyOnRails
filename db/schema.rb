@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_30_023155) do
+ActiveRecord::Schema.define(version: 2021_12_01_050004) do
+
+  create_table "checkpoints", force: :cascade do |t|
+    t.integer "team_id"
+    t.string "checkpoint_name"
+    t.datetime "due_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string "course_name"
@@ -32,7 +40,6 @@ ActiveRecord::Schema.define(version: 2021_11_30_023155) do
   create_table "feedbacks", force: :cascade do |t|
     t.integer "fid"
     t.integer "team_id"
-    t.integer "course_id"
     t.integer "giveuser_id", null: false
     t.integer "receiveuser_id", null: false
     t.boolean "done"
@@ -40,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_11_30_023155) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "score"
+    t.integer "checkpoint_id"
     t.index ["giveuser_id"], name: "index_feedbacks_on_giveuser_id"
     t.index ["receiveuser_id"], name: "index_feedbacks_on_receiveuser_id"
   end

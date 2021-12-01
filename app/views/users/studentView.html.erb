@@ -56,7 +56,7 @@
   <!--
   <%@giveuser_feedbacks.each do |guf|%>
     <tr>
-      <td> <%= Course.find(guf.course_id).course_name%> </td>
+      <td> <%= Course.find(Team.find(guf.team_id).course_id).course_name%> </td>
       <td> <%= Team.find(guf.team_id).team_name%> </td>
       <td> <%= guf.fid%> </td>
       <td> <%= User.find(guf.receiveuser_id).fname + " " + User.find(guf.receiveuser_id).lname %> </td>
@@ -68,7 +68,7 @@
   
   <%@user_feedbackGroups.each do |guf|%>
     <tr>
-      <td> <%= Course.find(guf.course_id).course_name%> </td>
+      <td> <%= Course.find(Team.find(guf.team_id).course_id).course_name%> </td>
       <td> <%= Team.find(guf.team_id).team_name%> </td>
       <td> <%= guf.fid%> </td>
       <td>View<td>
