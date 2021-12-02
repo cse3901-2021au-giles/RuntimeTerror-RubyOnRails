@@ -65,7 +65,7 @@ class FeedbacksController < ApplicationController
     @user = Current.user
     @allteams = Team.all
     @teams = @user.teams  #Collection of all of the @users teams
-    @assigned_checkpoints = Checkpoint.where(team_id: @teams.ids, due_date: 1.hour.ago ).order(due_date: :desc) #Collection of all of the checkpoints assigned to @user where due date has expired
+    @assigned_checkpoints = Checkpoint.where(team_id: @teams.ids).where("due_date > ?", DateTime.now).order(due_date: :desc) #Collection of all of the checkpoints assigned to @user where due date has expired
     # @received_feedbacks = #Collection of all received feedbacks from collections (based on due date and done attribute)
   end
 
