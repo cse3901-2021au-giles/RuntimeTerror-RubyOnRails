@@ -22,3 +22,12 @@
   background-color: #808080;
   color: #000000;
 }
+
+.center{
+  text-align: center;
+}
+
+table{
+  margin-left:auto;
+  margin-right:auto;
+}

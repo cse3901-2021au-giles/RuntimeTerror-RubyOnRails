@@ -1,0 +1,35 @@
+<% content_for :title, "Completed Feedback" %>
+<div class="center"> 
+<p> <%= @user.fname %> </p>
+
+<% @allteams.each do |team| %>
+    <p> <%=team.team_name%></p>
+<% end %>
+
+<% @teams.each do |team| %>
+    <p> <%=team.team_name%></p>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Due</th>
+      <th scope="col">Project Name</th>
+      <th scope="col">Team Name</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@assigned_checkpoints.each do |checkpoint| %>
+        <tr>
+            <td><%=checkpoint.due_date%></td>
+            <td><%=checkpoint.checkpoint_name%></td>
+            <td><%=@teams.find(checkpoint.id).team_name%></td>
+            <td></td>
+        </tr>
+    <% end %>
+    
+  </tbody>
+</table>
+
+</div>
