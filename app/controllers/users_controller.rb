@@ -19,7 +19,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   # User Profile dashboard
   def show
-
     @courses = Course.find(@user.courses.ids)
     @teams = Team.find(@user.teams.ids)
     @user_feedbackGroups = Feedback.group(:fid, :team_id, :course_id).where(giveuser_id: @user.id)

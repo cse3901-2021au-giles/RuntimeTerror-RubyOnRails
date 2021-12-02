@@ -38,6 +38,11 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to feedback_url(@feedback)
   end
 
+  test "should get received" do 
+    get feedback_received_url
+    assert_response :success
+  end
+
   test "should destroy feedback" do
     assert_difference('Feedback.count', -1) do
       delete feedback_url(@feedback)

@@ -9,8 +9,12 @@ Rails.application.routes.draw do
   get '/password', to: "passwords#edit", as: :edit_password
   patch '/password', to: "passwords#update"
 
+
   get '/dashboard', to: "users#show", as: :view_user
   get '/courses', to: "users#edit_courses", as: :edit_courses
+
+  #Configuration for received user feedback page
+  get 'feedbacks/received', to: 'feedbacks#received', as: :feedback_received
 
   resources :users
   resources :feedbacks
