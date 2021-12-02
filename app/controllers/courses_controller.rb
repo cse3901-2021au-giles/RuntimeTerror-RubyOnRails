@@ -4,7 +4,32 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
+    @courseUser = CoursesUser.new
+    if Current.user.role == 1
+      render "courses/user"
+    else
+      render "courses/admin"
+    end
     @courses = Course.all
+  end
+
+  def addCourseUser
+
+    course2Add = Course.find_by(class_code: params[:code])
+
+    if course2Add
+      @courseUser = CoursesUser.new(course_id:course2Add.id, user_id: Current.user.id)
+      
+      if @courseUser.save
+        redirect_to courses_path, notice: "The course has been joined"
+      else
+        flash[:alert] = "could not join course"
+        render "courses/user"
+      end
+    end
+  end
+
+  def removeCourseUser
   end
 
   # GET /courses/1
