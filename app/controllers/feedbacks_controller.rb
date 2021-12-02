@@ -71,7 +71,8 @@ class FeedbacksController < ApplicationController
   def view_completed
     @user = Current.user
     @checkpoint = Checkpoint.find(params[:id]) #Current checkpoint
-    @receivedfeedbacks = Feedback.where(checkpoint_id: @checkpoint.id, receiveuser_id: @user.id, done: true).where.not(giveuser_id: @user.id) #Collection of all feedbacks from checkpoint beside @users
+    @studentreceivedfeedbacks = Feedback.where(checkpoint_id: @checkpoint.id, receiveuser_id: @user.id, done: true).where.not(giveuser_id: @user.id) #Collection of all feedbacks from checkpoint beside @users
+    @adminfeedbacks= Feedback.where(checkpoint_id: @checkpoint.id, done: true) #Collection of all feedbacks from checkpoint
   end
 
   private
