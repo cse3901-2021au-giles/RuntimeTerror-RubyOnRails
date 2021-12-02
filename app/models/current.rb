@@ -1,9 +1,7 @@
 class Current < ActiveSupport::CurrentAttributes
   attribute :user
-  attribute :courses
 
+  # We want to remove these eventually
+  attribute :courses
   attribute :teams
-  attribute :checkpoints
-  attribute :give_feedbacks
-  attribute :receive_feedbacks
 end

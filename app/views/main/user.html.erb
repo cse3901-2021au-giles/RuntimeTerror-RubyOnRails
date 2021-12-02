@@ -1,0 +1,31 @@
+<h3>Hi <%=Current.user.fname%> <%=Current.user.lname%>!</h3>
+<p>Check out your ToDo feedbacks below or use the feedback tab to view released survey results. You can also add/drop courses through the course tab.</p>
+<h5>ToDo Checkpoints</h5>
+<% if @todo_checkpoints.empty? %>
+  <p>No checkpoints to finish!</p>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Course</th>
+        <th scope="col">Team</th>
+        <th scope="col">Checkpoint</th>
+        <th scope="col">Due Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @todo_checkpoints.each do |cp| %>
+        <tr>
+          <td><%= cp.course.course_name %></td>
+          <td><%= cp.team.team_name %></td>
+          <td><%= cp.checkpoint_name %></td>
+          <td><%= cp.due_date %></td>
+          <%# signup_path -> survey_path%>
+          <%# in the survey_path folder, assign Current.checkpoint%>
+          <td><%= button_to "Submit Survey", signup_path, params: {checkpoint: cp.id}, class: "btn btn-primary", method: :get %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
