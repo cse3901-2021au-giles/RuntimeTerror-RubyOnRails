@@ -1,4 +1,10 @@
-
-<h3> Feedback 1</h3>
-<p><%= feedback.body%></p>
-<p><%= feedback.score%></p>
+<div class="d-flex align-items-center justify-content-center" style="border-top: solid">
+    <div class="card border-0" style="width: 100%">
+        <div class="card-body center">
+            <p><b>Feedback Giver:</b> <%= feedback.giveuser.fname%></p>
+            <p><b>Feedback Recipient:</b> <%= feedback.receiveuser.fname%></p>
+            <p><b>Body: </b> "<%= feedback.body%>"</p>
+            <p><b>Score: </b> <%= feedback.score%></p>
+        </div>
+    </div>
+</div>
