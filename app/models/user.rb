@@ -29,4 +29,19 @@ class User < ApplicationRecord
   validates :fname, presence: {message: "- First Name can't be blank"}, length: { maximum: 25 }
   validates :lname, presence: {message: "- Last Name can't be blank"}, length: { maximum: 25 }
 
+  def get_courses
+    Course.joins(:users).where(users: self.id)
+  end
+
+  def get_teams
+    Team.joins(:users).where(users: self.id)
+  end
+
+  def get_give_feedbacks
+    Feedback.where("giveuser_id = ?", self.id)
+  end
+
+  def get_receive_feedbacks
+    Feedback.where("receiveuser_id = ?", self.id)
+  end
 end

@@ -12,4 +12,17 @@ class Feedback < ApplicationRecord
 
   # Ensure the combination of fid, team_id, course_id, giveuser_id, and receiveuser_id is unique
   validates_uniqueness_of :fid, scope: %i[team_id checkpoint_id giveuser_id receiveuser_id]
+
+  def get_checkpoint
+    Checkpoint.where(id: self.checkpoint_id).to_a.first
+  end
+
+  def get_team
+    Team.where(id: self.team_id).to_a.first
+  end
+
+  def get_course
+    team = self.get_team
+    Course.where(id: team.course_id).to_a.first
+  end
 end
