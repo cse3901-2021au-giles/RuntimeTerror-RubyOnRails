@@ -1,7 +1,17 @@
 <% content_for :title, "Feedback from " + @checkpoint.checkpoint_name%>
 
 <div class="d-flex align-items-center justify-content-center">
-    <% @receivedfeedbacks.each do |feedback| %>
-        <p><%= render partial: 'view_feedback_layout', :locals => {:feedback => feedback} %> </p>
+    <%if @user.role==1 %>
+        <% @studentreceivedfeedbacks.each do |feedback| %>
+            <div class="container">
+                <%= render partial: 'feedbacks/view_partials/view_completed_student_layout', :locals => {:feedback => feedback} %>
+            </div>
+        <% end %> 
+    <%else %>
+        <% @adminfeedbacks.each do |feedback| %>  
+            <div class="container">
+                <%= render partial: 'feedbacks/view_partials/view_completed_admin_layout', :locals => {:feedback => feedback} %>
+            </div>
+        <% end %>
     <% end %>
 </div>

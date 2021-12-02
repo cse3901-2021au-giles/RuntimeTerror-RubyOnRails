@@ -9,8 +9,9 @@
 ## Current seeds:
 
 courses = Course.create!([
-        {id: "1", course_name: "CSE3901", class_code: "cse3901", admin_code: "asdf1234"},
-        {id: "2", course_name: "CSE3902", class_code: "cse3902", admin_code: "qwer1234"},
+        {id: "1", course_name: "CSE3901", class_code: "cse3901", admin_code: "zxcv1234"},
+        {id: "2", course_name: "CSE3902", class_code: "cse3902", admin_code: "asdf1234"},
+        {id: "3", course_name: "CSE3903", class_code: "cse3903", admin_code: "qwer1234"},
         ])
 
 users = User.create! ([
@@ -20,6 +21,8 @@ users = User.create! ([
         {id: "4", email: "wilcox.331@osu.edu", fname: "Luke", lname: "Wilcox", role: "1", password:"password", password_confirmation:"password"},
         {id: "5", email: "giles.1@osu.edu", fname: "Charlie", lname: "Giles", role: "0", password:"password", password_confirmation:"password"},
         {id: "6", email: "vanhoose.3@osu.edu", fname: "Justin", lname: "Vanhoose", role: "1", password:"password", password_confirmation:"password"},
+        {id: "7", email: "kirby.249@osu.edu", fname: "Neil", lname: "Kirby", role: "0", password:"password", password_confirmation:"password"},
+        {id: "8", email: "sivilotti.1@osu.edu", fname: "Paul", lname: "Sivilotti", role: "0", password:"password", password_confirmation:"password"},
         ])
 
 teams = Team.create! ([
@@ -42,6 +45,8 @@ coursesUsers = CoursesUser.create!([
         {course_id: "1", user_id: "5"},
         {course_id: "1", user_id: "6"},
         {course_id: "2", user_id: "3"},
+        {course_id: "2", user_id: "7"},
+        {course_id: "3", user_id: "8"},
         ])
 
 teamsUsers = TeamsUser.create!([
@@ -49,6 +54,7 @@ teamsUsers = TeamsUser.create!([
         {team_id: "1", user_id: "2"},
         {team_id: "1", user_id: "3"},
         {team_id: "1", user_id: "4"},
+        {team_id: "1", user_id: "5"},
         {team_id: "2", user_id: "3"},
         {team_id: "2", user_id: "6"},
         ])
@@ -68,5 +74,8 @@ feedbacks = Feedback.create!([
         {id: "12", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "4", receiveuser_id: "3", done: "false", score: "0", body: "text12"},
         {id: "13", fid: "1", team_id: "2", checkpoint_id: "2", giveuser_id: "3", receiveuser_id: "6", done: "false", score: "0", body: "text13"},
         {id: "14", fid: "2", team_id: "1", checkpoint_id: "1", giveuser_id: "1", receiveuser_id: "3", done: "true", score: "0", body: "text14"},
+        {id: "15", fid: "3", team_id: "1", checkpoint_id: "1", giveuser_id: "1", receiveuser_id: "3", done: "false", score: "0", body: "text15"},
+        {id: "16", fid: "4", team_id: "1", checkpoint_id: "1", giveuser_id: "1", receiveuser_id: "2", done: "true", score: "0", body: "text16"},
+        {id: "17", fid: "5", team_id: "1", checkpoint_id: "1", giveuser_id: "2", receiveuser_id: "3", done: "true", score: "9", body: "Good Job!"},
         ])
 

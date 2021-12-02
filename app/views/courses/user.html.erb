@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<!-- Lets layout know what the title is-->
+<% content_for :title, "User Courses"%>
+<h2> <%= Current.user.fname%></h2>
+
+<%= form_with url: courses_path do |form|%>
+
+  <div class="mb-3">
+    <%= form.label :code %> 
+    <%= form.text_field :code, class: "form-control", placeholder: "cse3902" %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit "Join Course", class: "btn btn-primary" %>
+  </div>
+<%end%>
+<table>
+  <tr>
+    <th> Course Name </th>
+    <th> Actions </th>
+  </tr>
+  <% Current.user.courses.each do |c|%>
+  <tr>
+    <td><%= c.course_name %></td>
+    <% if Current.user.role == 1%>
+      <td> Leave <td>
+    <%end%>
+  </tr>
+  <%end%>
+</table>
+
+
+<%= link_to 'Back', root_path %>
