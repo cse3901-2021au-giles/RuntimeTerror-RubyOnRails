@@ -7,7 +7,8 @@ class MainController < ApplicationController
           #Current.give_feedbacks = Feedback.joins(:giveuser).where(user: Current.user.id)
           #Current.receive_feedbacks = Feedback.joins(:receiveuser).where(user: Current.user.id)
         else # Professor
-          foo = 1
+          Current.teams = Team.joins(Current.courses)
+          # Current.checkpoints = Checkpoint.joins(Current.teams)
         end
       end
     end
