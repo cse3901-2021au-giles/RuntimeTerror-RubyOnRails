@@ -67,5 +67,6 @@ feedbacks = Feedback.create!([
         {id: "11", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "4", receiveuser_id: "2", done: "false", score: "0", body: "text11"},
         {id: "12", fid: "1", team_id: "1", checkpoint_id: "1", giveuser_id: "4", receiveuser_id: "3", done: "false", score: "0", body: "text12"},
         {id: "13", fid: "1", team_id: "2", checkpoint_id: "2", giveuser_id: "3", receiveuser_id: "6", done: "false", score: "0", body: "text13"},
+        {id: "14", fid: "2", team_id: "1", checkpoint_id: "1", giveuser_id: "1", receiveuser_id: "3", done: "true", score: "0", body: "text14"},
         ])
 

@@ -16,7 +16,7 @@
             <td><%=checkpoint.due_date%></td>
             <td><%=checkpoint.checkpoint_name%></td>
             <td><%=@teams.find(checkpoint.id).team_name%></td>
-            <td></td>
+            <td><%=link_to 'View', feedback_view_completed_path(checkpoint.id)%></td>
         </tr>
     <% end %>
     

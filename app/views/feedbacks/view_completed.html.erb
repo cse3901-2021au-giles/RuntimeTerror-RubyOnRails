@@ -1,0 +1,7 @@
+<% content_for :title, "Feedback from " + @checkpoint.checkpoint_name%>
+
+<div class="d-flex align-items-center justify-content-center">
+    <% @receivedfeedbacks.each do |feedback| %>
+        <p><%= render partial: 'view_feedback_layout', :locals => {:feedback => feedback} %> </p>
+    <% end %>
+</div>
