@@ -1,1 +1,31 @@
-This is an admin page
+<h3>Hi <%=Current.user.fname%> <%=Current.user.lname%>!</h3>
+<p>Check out finished feedbacks below. You can also add/drop courses through the course tab.</p>
+<h5>Completed Checkpoints</h5>
+<% if @completed_checkpoints.empty? %>
+  <p>No checkpoints are finished!</p>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Course</th>
+        <th scope="col">Team</th>
+        <th scope="col">Checkpoint</th>
+        <th scope="col">Due Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @completed_checkpoints.each do |cc| %>
+        <tr>
+          <td><%= cc.course.course_name %></td>
+          <td><%= cc.team.team_name %></td>
+          <td><%= cc.checkpoint_name %></td>
+          <td><%= cc.due_date %></td>
+          <%# signup_path -> survey_path%>
+          <%# in the survey_path folder, assign Current.checkpoint%>
+          <td><%= button_to "Return Survey", signup_path, params: {checkpoint: cc.id}, class: "btn btn-primary", method: :get %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

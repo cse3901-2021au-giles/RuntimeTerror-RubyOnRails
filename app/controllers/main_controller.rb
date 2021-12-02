@@ -7,8 +7,9 @@ class MainController < ApplicationController
           give_feedbacks.each { |feedback| @todo_checkpoints.add(feedback.checkpoint) }
           render "main/user"
         else
-          Current.teams = Team.joins(Current.courses)
-          #render "main/admin"
+          @completed_checkpoints = Set.new()
+          Current.user.courses.each {|c| c.users.each {|u| u.giveuser_feedbacks.where(done: true).each {|f| @completed_checkpoints.add(f.checkpoint)}}}
+          render "main/admin"
         end
       end
     end
