@@ -1,0 +1,32 @@
+<% if Current.user %>
+  <%= Current.user.inspect()%>
+<% end %>
+<br>
+
+<% if Current.courses %>
+  <% Current.courses.each do |c| %>
+    <%= c.inspect() %>
+  <% end %>
+<% end %>
+<br>
+
+<% if Current.teams %>
+  <% Current.teams.each do |c| %>
+    <%= c.inspect() %>
+  <% end %>
+<% end %>
+<br>
+
+<% if Current.give_feedbacks %>
+  <% Current.give_feedbacks.each do |c| %>
+    <%= c.inspect() %>
+  <% end %>
+<% end %>
+<br>
+
+<% if Current.receive_feedbacks %>
+  <% Current.receive_feedbacks.each do |c| %>
+    <%= c.inspect() %>
+  <% end %>
+<% end %>
+<br>
