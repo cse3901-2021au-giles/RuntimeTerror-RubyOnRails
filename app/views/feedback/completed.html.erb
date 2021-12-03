@@ -1,0 +1,17 @@
+<% content_for :title, "Feedback from " + @checkpoint.checkpoint_name%>
+
+<div class="d-flex align-items-center justify-content-center">
+  <%if Current.user.role==1 %>
+    <% @feedbacks.each do |feedback| %>
+      <div class="container">
+        <%= render partial: 'feedback/completed_student', :locals => {:feedback => feedback} %>
+      </div>
+    <% end %> 
+  <%else %>
+    <% @feedbacks.each do |feedback| %>  
+      <div class="container">
+        <%= render partial: 'feedback/completed_admin', :locals => {:feedback => feedback} %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,26 @@
+<% content_for :title, "Feedback" %>
+<%= render partial: "feedback/todo"%>
+
+<h4>Completed Checkpoints</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Course</th>
+      <th scope="col">Team</th>
+      <th scope="col">Checkpoint</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%Current.user.completed_checkpoints.each do |cp| %>
+      <tr>
+        <td><%= cp.course.course_name%></td>
+        <td><%= cp.team.team_name %></td>
+        <td><%= cp.checkpoint_name %></td>
+        <td><%= cp.due_date %></td>
+        <td><%= button_to "View Feedback", feedback_completed_path(cp.id), class: "btn btn-primary", method: :get %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

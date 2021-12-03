@@ -1,0 +1,30 @@
+<% Current.user.courses.each do |course| %>
+  <h3><%= course.course_name %>
+  <% course.teams.each do |team| %>
+    <h4><%= team.team_name%></h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Checkpoint</th>
+          <th scope="col">Due Date</th>
+          <% team.users.each do |user| %>
+            <th scope="col"><%= user.fname %></th>
+          <% end %>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% team.checkpoints.each do |cp| %>
+          <tr>
+            <td><%= cp.checkpoint_name %></td>
+            <td><%= cp.due_date %></td>
+            <% team.users.each do |user| %>
+              <th scope="col"><%= Feedback.find_by(checkpoint_id: cp.id, giveuser_id: user.id, done: true) ? "\u2713" : "\u2716" %></th>
+            <% end %>
+            <td><%= button_to "View Feedback", feedback_completed_path(cp.id), class: "btn btn-primary", method: :get %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table> 
+  <% end %>
+<% end %>

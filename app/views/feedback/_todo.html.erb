@@ -1,0 +1,29 @@
+<h5>ToDo Checkpoints</h5>
+<% if Current.user.uncompleted_checkpoints.empty? %>
+  <p>No checkpoints to finish!</p>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Course</th>
+        <th scope="col">Team</th>
+        <th scope="col">Checkpoint</th>
+        <th scope="col">Due Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Current.user.uncompleted_checkpoints.each do |cp| %>
+        <tr>
+          <td><%= cp.course.course_name %></td>
+          <td><%= cp.team.team_name %></td>
+          <td><%= cp.checkpoint_name %></td>
+          <td><%= cp.due_date %></td>
+          <%# signup_path -> survey_path%>
+          <%# in the survey_path folder, assign Current.checkpoint%>
+          <td><%= button_to "Submit Feedback", signup_path, params: {checkpoint: cp.id}, class: "btn btn-primary", method: :get %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
