@@ -11,11 +11,13 @@ Rails.application.routes.draw do
 
 
   #Configuration for user and admin course pages
-  get '/courses/new', to: "courses#new"
+  get '/courses/new', to: "courses#new", as: :new_course
   post '/courses/new', to: "courses#create", as: :create_course
+  delete '/courses/:id', to: "courses#destroy", as: :destroy_course
   get '/courses', to: "courses#index", as: :view_courses
   post '/courses', to: "courses#addCourseUser"
-  delete '/courses', to: "courses#removeCourseUser"
+
+
 
 
   #Configuration for received user feedback page
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
   resources :users
   resources :feedbacks
   resources :teams
-  resources :courses
+  #resources :courses
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #root 'application#hello'
   # get '/login', to: 'sessions#new'

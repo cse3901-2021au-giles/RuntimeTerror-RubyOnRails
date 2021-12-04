@@ -16,7 +16,7 @@
       <td><strong><%= c.course_name %></strong></td>
       <td><%= c.class_code%></td>
       <td><%= c.admin_code%></td>
-      <td><%= button_to 'Delete Course', c, class: "btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= button_to "Delete Course", destroy_course_path(c), class: "btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <%end%>
   <tr>
