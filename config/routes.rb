@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get '/courses', to: "courses#index", as: :view_courses
   post '/courses', to: "courses#addCourseUser"
   delete '/courses', to: "courses#removeCourseUser"
+  #post '/courses/admin', to: "courses#create"
+  #delete '/courses/admin', to: "courses#delete"
+  #get '/courses/remove', to: "courses#teams"
+  #post '/courses/remove', to: "courses#remove"
 
 
   #Configuration for received user feedback page
@@ -21,11 +25,15 @@ Rails.application.routes.draw do
   get '/feedback/completed/:id', to: 'feedback#completed', as: :feedback_completed
   get '/feedback/form', to: 'feedback#form', as: :form
   patch '/feedback/form', to: 'feedback#update'
+  #post '/feedback/create', to: 'feedback#create'
 
 
-  resources :users
-  resources :feedbacks
-  resources :teams
+  #Configuration for Teams tab
+  #get '/teams', to: 'teams#index'
+  #get '/teams/create', to: 'teams#team'
+  #post '/teams/create', to: 'teams#create'
+
+
   resources :courses
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #root 'application#hello'
