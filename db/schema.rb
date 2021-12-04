@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_04_045414) do
+ActiveRecord::Schema.define(version: 2021_12_04_053112) do
 
   create_table "checkpoints", force: :cascade do |t|
-    t.integer "team_id"
+    t.integer "team_id", null: false
     t.string "checkpoint_name"
     t.datetime "due_date"
     t.datetime "created_at", precision: 6, null: false
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2021_12_04_045414) do
 
   create_table "courses", force: :cascade do |t|
     t.string "course_name"
-    t.string "class_code"
-    t.string "admin_code"
+    t.string "class_code", null: false
+    t.string "admin_code", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -38,15 +38,15 @@ ActiveRecord::Schema.define(version: 2021_12_04_045414) do
   end
 
   create_table "feedbacks", force: :cascade do |t|
-    t.integer "team_id"
+    t.integer "team_id", null: false
     t.integer "giveuser_id", null: false
     t.integer "receiveuser_id", null: false
-    t.boolean "done"
+    t.boolean "done", null: false
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "score"
-    t.integer "checkpoint_id"
+    t.integer "checkpoint_id", null: false
     t.index ["giveuser_id"], name: "index_feedbacks_on_giveuser_id"
     t.index ["receiveuser_id"], name: "index_feedbacks_on_receiveuser_id"
   end
