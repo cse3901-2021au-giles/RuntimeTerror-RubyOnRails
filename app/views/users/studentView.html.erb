@@ -48,7 +48,6 @@
   <tr>
     <th>Course</th>
     <th>Team</th>
-    <th>Feedback Number</th>
     <th>Action</th>
 
   </tr>
@@ -70,7 +69,6 @@
     <tr>
       <td> <%= Course.find(Team.find(guf.team_id).course_id).course_name%> </td>
       <td> <%= Team.find(guf.team_id).team_name%> </td>
-      <td> <%= guf.fid%> </td>
       <td>View<td>
     </tr>
   <%end%>

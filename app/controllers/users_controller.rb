@@ -21,7 +21,8 @@ class UsersController < ApplicationController
   def show
     @courses = Course.find(@user.courses.ids)
     @teams = Team.find(@user.teams.ids)
-    @user_feedbackGroups = Feedback.group(:fid, :team_id, :course_id).where(giveuser_id: @user.id)
+    #@user_feedbackGroups = Feedback.group(:fid, :team_id, :course_id).where(giveuser_id: @user.id)
+    @user_feedbackGroups = Feedback.group(:team_id, :course_id).where(giveuser_id: @user.id)
     @giveuser_feedbacks = Feedback.order(created_at: :desc).find(@user.giveuser_feedbacks.ids)
     #@giveuser_feedbacks.order(created_at: :desc)
 
