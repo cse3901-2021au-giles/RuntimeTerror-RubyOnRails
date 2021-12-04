@@ -10,4 +10,7 @@ class Course < ApplicationRecord
   validates_uniqueness_of :admin_code
 
   #validates_uniqueness_of :class_code, scope: %i[receiveuser_id]
+
+  #def removeAllUsers(course)
+
 end

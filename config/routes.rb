@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/courses/new', to: "courses#new"
   post '/courses/new', to: "courses#create", as: :create_course
   get '/courses', to: "courses#index", as: :view_courses
-  post '/courses', to: "courses#create"
+  post '/courses', to: "courses#addCourseUser"
   delete '/courses', to: "courses#removeCourseUser"
 
 

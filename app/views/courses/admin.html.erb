@@ -2,7 +2,7 @@
 
 <!-- Lets layout know what the title is-->
 <% content_for :title, "Admin Courses"%>
-<p> <%= Current.user.fname%></p>
+<h2> <%= Current.user.fname%></h2>
 
 <table>
   <tr>
@@ -16,7 +16,7 @@
       <td><strong><%= c.course_name %></strong></td>
       <td><%= c.class_code%></td>
       <td><%= c.admin_code%></td>
-      <td><%= button_to "Delete", new_course_path, class: "btn btn-primary", method: :get %></td>
+      <td><%= button_to 'Delete Course', c, class: "btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <%end%>
   <tr>
