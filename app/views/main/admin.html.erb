@@ -1,5 +1,4 @@
-<h3>Hi <%=Current.user.fname%> <%=Current.user.lname%>!</h3>
-<p>Check out finished feedbacks below. You can also add/drop courses through the course tab.</p>
+<%= render partial: "main/header"%>
 <h5>Completed Checkpoints</h5>
 <% if @completed_checkpoints.empty? %>
   <p>No checkpoints are finished!</p>

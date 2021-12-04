@@ -1,4 +1,4 @@
-<% content_for :title, "Feedback" %>
+<% content_for :title, Current.user.fname + "'s Feedback" %>
 <%= render partial: "feedback/todo"%>
 
 <h4>Completed Checkpoints</h4>
@@ -15,7 +15,7 @@
   <tbody>
     <%Current.user.completed_checkpoints.each do |cp| %>
       <tr>
-        <td><%= cp.course.course_name%></td>
+        <td><%= cp.team.course.course_name%></td>
         <td><%= cp.team.team_name %></td>
         <td><%= cp.checkpoint_name %></td>
         <td><%= cp.due_date %></td>

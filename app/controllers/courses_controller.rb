@@ -33,15 +33,12 @@ class CoursesController < ApplicationController
   def edit
   end
 
-  # POST /courses
-  # POST /courses.json
+  # POST /courses/new
   def create
     @course = Course.new(course_params)
 
-    #respond_to do |format|
       if @course.save
         @courseAdmin = CoursesUser.new(course_id: @course.id, user_id: Current.user.id)
-        #render plain: Current.user.id
         if @courseAdmin.save
           redirect_to view_courses_path, notice: 'Course was successfully created.'
         else
@@ -50,11 +47,11 @@ class CoursesController < ApplicationController
       else
         render :new
       end
-    #end
   end
 
+  # POST /courses
+  # Add a user to a course
   def addCourseUser
-
     course2Add = Course.find_by(class_code: params[:code])
 
     if course2Add
@@ -90,7 +87,6 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    #removeAllUsers(@course)
     @course.destroy
     respond_to do |format|
       format.html { redirect_to courses_url, notice: 'Course was successfully deleted.' }

@@ -15,7 +15,7 @@
     <tbody>
       <% Current.user.uncompleted_checkpoints.each do |cp| %>
         <tr>
-          <td><%= cp.course.course_name %></td>
+          <td><%= cp.team.course.course_name %></td>
           <td><%= cp.team.team_name %></td>
           <td><%= cp.checkpoint_name %></td>
           <td><%= cp.due_date %></td>

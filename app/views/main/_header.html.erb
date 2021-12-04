@@ -1,2 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<!-- Lets layout know what the title is-->
+<% content_for :title, "Home"%>
+
 <h3>Hi <%=Current.user.fname%> <%=Current.user.lname%>,</h3>
 <h5>Today's date is: <%= Time.new.strftime("%Y-%m-%d") %></h5>

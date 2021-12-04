@@ -1,3 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<!-- Lets layout know what the title is-->
+<% content_for :title, "Admin Feedback"%>
+<% if Current.user.courses.empty? %>
+  <p>No feedbacks!</p>
+<% end %>
+
 <% Current.user.courses.each do |course| %>
   <h3><%= course.course_name %>
   <% course.teams.each do |team| %>

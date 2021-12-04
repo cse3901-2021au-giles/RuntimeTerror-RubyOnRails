@@ -4,24 +4,27 @@
 <% content_for :title, "Admin Courses"%>
 <h2> <%= Current.user.fname%></h2>
 
-<table>
-  <tr>
-    <th> Course Name </th>
-    <th> Class Code</th>
-    <th> Admin Code</th>
-    <th> Actions </th>
-  </tr>
-  <% Current.user.courses.each do |c|%>
+<%= button_to "Create New Course", new_course_path, class: "btn btn-primary", method: :get %>
+
+<table class="table">
+  <thead>
     <tr>
-      <td><strong><%= c.course_name %></strong></td>
-      <td><%= c.class_code%></td>
-      <td><%= c.admin_code%></td>
-      <td><%= button_to "Delete Course", destroy_course_path(c), class: "btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <th scope="col"> Course Name </th>
+      <th scope="col"> Class Code</th>
+      <th scope="col"> Admin Code</th>
+      <th scope="col"> Actions </th>
     </tr>
-  <%end%>
-  <tr>
-    <td><%= button_to "Create New Course", new_course_path, class: "btn btn-primary", method: :get %></td>
-  </tr>
+  </thead>
+  <tbody>
+    <% Current.user.courses.each do |c|%>
+      <tr>
+        <td><strong><%= c.course_name %></strong></td>
+        <td><%= c.class_code%></td>
+        <td><%= c.admin_code%></td>
+        <td><%= button_to "Delete Course", destroy_course_path(c), class: "btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <%end%>
+  </tbody>
 </table>
 
 
