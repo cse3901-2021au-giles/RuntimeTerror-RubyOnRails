@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   #Configuration for received user feedback page
   get '/feedback', to: 'feedback#index'
   get '/feedback/completed/:id', to: 'feedback#completed', as: :feedback_completed
+  get '/feedback/form', to: 'feedback#form', as: :form
+  patch '/feedback/form', to: 'feedback#update'
 
 
   resources :users

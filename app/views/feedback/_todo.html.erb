@@ -21,7 +21,7 @@
           <td><%= cp.due_date %></td>
           <%# signup_path -> survey_path%>
           <%# in the survey_path folder, assign Current.checkpoint%>
-          <td><%= button_to "Submit Feedback", signup_path, params: {checkpoint: cp.id}, class: "btn btn-primary", method: :get %></td>
+          <td><%= button_to "Submit Feedback", form_path, params: {checkpoint: cp.id}, class: "btn btn-primary", method: :get %></td>
         </tr>
       <% end %>
     </tbody>
