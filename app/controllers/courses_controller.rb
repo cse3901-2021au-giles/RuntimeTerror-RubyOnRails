@@ -4,13 +4,53 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courseUser = CoursesUser.new
+    #@course = Course.new
+    #@courseUser = CoursesUser.new
     if Current.user.role == 1
       render "courses/user"
     else
       render "courses/admin"
     end
-    @courses = Course.all
+    #@courses = Course.all
+  end
+
+
+  def removeCourseUser
+  end
+
+  # GET /courses/1
+  # GET /courses/1.json
+  def show
+  end
+
+  # GET /courses/new
+  def new
+    @course = Course.new
+    @courseAdmin = CoursesUser.new
+  end
+
+  # GET /courses/1/edit
+  def edit
+  end
+
+  # POST /courses
+  # POST /courses.json
+  def create
+    @course = Course.new(course_params)
+
+    #respond_to do |format|
+      if @course.save
+        @courseAdmin = CoursesUser.new(course_id: @course.id, user_id: Current.user.id)
+        #render plain: Current.user.id
+        if @courseAdmin.save
+          redirect_to view_courses_path, notice: 'Course was successfully created.'
+        else
+          render :new, notice: 'Failed to join created course.'
+        end
+      else
+        render :new
+      end
+    #end
   end
 
   def addCourseUser
@@ -24,40 +64,11 @@ class CoursesController < ApplicationController
         redirect_to courses_path, notice: "The course has been joined"
       else
         flash[:alert] = "could not join course"
-        render "courses/user"
-      end
-    end
-  end
-
-  def removeCourseUser
-  end
-
-  # GET /courses/1
-  # GET /courses/1.json
-  def show
-  end
-
-  # GET /courses/new
-  def new
-    @course = Course.new
-  end
-
-  # GET /courses/1/edit
-  def edit
-  end
-
-  # POST /courses
-  # POST /courses.json
-  def create
-    @course = Course.new(course_params)
-
-    respond_to do |format|
-      if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
-      else
-        format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+        if Current.user.role == 1
+          render "courses/user"
+        else
+          render "courses/admin"
+        end
       end
     end
   end

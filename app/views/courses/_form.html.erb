@@ -1,32 +1,29 @@
-<%= form_with(model: course) do |form| %>
-  <% if course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+<%= form_with(model: course, url: "new") do |form| %>
 
-      <ul>
-        <% course.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <% if form.object.errors.any?%>
+    <div class="alert alert-danger">
+      <% form.object.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="mb-3">
     <%= form.label :course_name %>
-    <%= form.text_field :course_name %>
+    <%= form.text_field :course_name, class: "form-control", placeholder: "AP Computer Science Principles"%>
   </div>
 
-  <div class="field">
+  <div class="mb-3">
     <%= form.label :class_code %>
-    <%= form.text_field :class_code %>
+    <%= form.text_field :class_code, class: "form-control", placeholder: "asdf1234" %>
   </div>
 
-  <div class="field">
+  <div class="mb-3">
     <%= form.label :admin_code %>
-    <%= form.text_field :admin_code %>
+    <%= form.text_field :admin_code, class: "form-control", placeholder: "qwer1234" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit "Create Course", class: "btn btn-primary" %>
   </div>
 <% end %>
