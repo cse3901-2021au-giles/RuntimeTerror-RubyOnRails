@@ -68,7 +68,7 @@
     <%@giveuser_feedbacks.each do |guf|%>
       <tr>
         <td> <%= Course.find(guf.course_id).course_name%> </td>
-        <td> <%= Team.find(guf.team_id).team_name%> </td>
+        <td> <%= Team.find(guf.checkpoint.team_id).team_name%> </td>
         <td> <%= User.find(guf.receiveuser_id).fname + " " + User.find(guf.receiveuser_id).lname %> </td>
       </tr>
 
