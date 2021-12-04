@@ -19,9 +19,9 @@ class FeedbackController < ApplicationController
     checkpoint = Checkpoint.find(params[:checkpoint])
     team = checkpoint.team
     @feedbacks_not_done = Feedback.where(giveuser_id: Current.user.id, done: false, checkpoint_id: checkpoint.id)
-    @feedback = @feedbacks_not_done.to_a.first
-    if @feedback
-      @receive_user = User.find(@feedback.receiveuser_id)
+    Current.feedback = @feedbacks_not_done.to_a.first
+    if Current.feedback
+      @receive_user = User.find(Current.feedback.receiveuser_id)
       render "feedback/form"
     else
       redirect_to feedback_path
@@ -29,14 +29,16 @@ class FeedbackController < ApplicationController
   end
 
   def update
-    @feedback = Feedback.find(feedback_params[:fid])
+    @feedback = Feedback.find(feedback_params[:id])
     if @feedback.update(feedback_params)
       redirect_to form_path(checkpoint: @feedback.checkpoint_id)
+    else
+      redirect_to form_path(checkpoint: @feedback.checkpoint_id), alert: "Something went wrong"
     end
   end
 
   private 
   def feedback_params
-    params.require(:feedback).permit(:score, :body, :fid, :done)
+    params.require(:feedback).permit(:score, :body, :id, :done)
   end
 end

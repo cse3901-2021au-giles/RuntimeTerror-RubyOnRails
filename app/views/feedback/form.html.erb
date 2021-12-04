@@ -1,5 +1,5 @@
 <% provide(:title, "Submit Feedback") %>
-<%= form_with model: @feedback, url: feedback_form_path do |form| %>
+<%= form_with model: Current.feedback, url: feedback_form_path do |form| %>
   <% if form.object.errors.any?%>
     <div class="alert alert-danger">
       <% form.object.errors.full_messages.each do |message| %>
@@ -7,6 +7,7 @@
       <% end %>
     </div>
   <% end %>
+
   <h5>Feedback for <%= @receive_user.fname + " " + @receive_user.lname%></h5>
 
   <div class="mb-3">
@@ -18,7 +19,7 @@
     <%= form.text_field :body, class: "form-control" %>
   </div>
   <%= form.hidden_field(:done, value: true) %>
-  <%= form.hidden_field(:fid, value: @feedback.id)%>
+  <%= form.hidden_field(:id, value: Current.feedback.id)%>
 
   <div class="mb-3">
     <%= form.submit "Submit", class: "btn btn-primary" %>
