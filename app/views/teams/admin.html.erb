@@ -1,0 +1,24 @@
+<% Current.user.courses.each do |course| %>
+  <span>
+  <h3>Course: <%= course.course_name%></h3>
+  <%= button_to "Create team", teams_create_path, class: "btn btn-primary", method: :get, params: {course: course.id} %>
+  </span>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Team</th>
+        <th scope="col">Members</th>
+      </tr>
+    </thead>
+    <tbody>
+  <% course.teams.each do |team| %>
+    <tr>
+      <td><%= team.team_name %></td>
+        <% team.users.each do | user| %>
+          <td><%= user.fname + " " + user.lname %></td>
+        <% end %>
+    </tr>
+  <% end %>
+    </tbody>
+  </table>
+<% end %>

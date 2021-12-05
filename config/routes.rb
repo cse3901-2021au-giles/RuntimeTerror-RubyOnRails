@@ -27,11 +27,18 @@ Rails.application.routes.draw do
   get '/feedback/completed/:id', to: 'feedback#completed', as: :feedback_completed
   get '/feedback/form', to: 'feedback#form', as: :form
   patch '/feedback/form', to: 'feedback#update'
+  #post '/feedback/create', to: 'feedback#create'
 
 
-  resources :users
-  resources :feedbacks
-  resources :teams
+  #Configuration for Teams tab
+  get '/teams', to: 'teams#index'
+  get '/teams/create', to: 'teams#team'
+  #post '/teams/create', to: 'teams#create'
+
+
+  #resources :users
+  #resources :feedbacks
+  #resources :teams
   #resources :courses
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #root 'application#hello'

@@ -12,7 +12,7 @@ class FeedbackController < ApplicationController
     unless Current.user.role == 0 || @checkpoint.team.users.include?(Current.user) 
       redirect_to feedback_path, alert: "You're not a part of this team; Unable to access feedback"
     end
-    @feedbacks = @checkpoint.feedbacks.where(done: true, receiveuser_id: Current.user.id)
+    @feedbacks = (Current.user.role == 1) ? @checkpoint.feedbacks.where(done: true, receiveuser_id: Current.user.id) : @checkpoint.feedbacks.where(done: true)
   end
 
   def form
