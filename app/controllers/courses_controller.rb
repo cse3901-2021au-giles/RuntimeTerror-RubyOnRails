@@ -102,21 +102,11 @@ class CoursesController < ApplicationController
         redirect_to courses_path, notice: "The course has been joined"
         #Does not save becuase relationship between user and course has already been created
       else
-        flash[:alert] = "Course has already been joined"
-        if Current.user.role == 1
-          render "courses/user"
-        else
-          render "courses/admin"
-        end
+        redirect_to courses_path, alert: "This course has already been joined"
       end
     #course2Add will be nil becuase it does not exist in db
     else
-      flash[:alert] = "Course does not exist"
-        if Current.user.role == 1
-          render "courses/user"
-        else
-          render "courses/admin"
-        end
+      redirect_to courses_path, alert: "Course does not exist.  Try again!"
     end
   end
 
