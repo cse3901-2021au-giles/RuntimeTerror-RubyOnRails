@@ -29,8 +29,8 @@ Rails.application.routes.draw do
 
 
   #Configuration for Teams tab
-  #get '/teams', to: 'teams#index'
-  #get '/teams/create', to: 'teams#team'
+  get '/teams', to: 'teams#index'
+  get '/teams/create', to: 'teams#team'
   #post '/teams/create', to: 'teams#create'
 
 

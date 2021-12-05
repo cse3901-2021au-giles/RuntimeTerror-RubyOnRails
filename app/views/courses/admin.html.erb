@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <!-- Lets layout know what the title is-->
 <% content_for :title, "User Courses"%>
 <p> <%= Current.user.fname%></p>
@@ -10,19 +8,13 @@
     <th> Actions </th>
   </tr>
   <% Current.user.courses.each do |c|%>
-  <tr>
-    <td><%= c.course_name %></td>
-    <% if Current.user.role == 1%>
-    <td> Leave <td>
-    <%else%>
-    <td> Delete </td>
-    <%end%>
-  </tr>
+    <tr>
+      <td><%= c.course_name %></td>
+      <td> Remove Students </td>
+      <td> Delete </td>
+    </tr>
   <%end%>
   <tr>
     <td> Add Class</td>
   </tr>
 </table>
-
-
-<%= link_to 'Back', Current.user %>
