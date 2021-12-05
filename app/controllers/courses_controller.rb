@@ -40,13 +40,12 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
       if @course.save
-
         # Add admin to newly created course. Creates a new record in CoursesUser
         @courseAdmin = CoursesUser.new(course_id: @course.id, user_id: Current.user.id)
         if @courseAdmin.save
           redirect_to view_courses_path, notice: 'Course was successfully created.'
         else
-          render :new, notice: 'Failed to join created course.'
+          redirect_to view_courses_path, notice: 'Failed to join created course.'
         end
       else
         render :new
@@ -80,7 +79,11 @@ class CoursesController < ApplicationController
       # remove user from any team that the user is currently a part of (deletes record from TeamsUser)
       t.users.destroy(@user) #Comment out this line to allow users to view previous feedbacks
     end 
-    redirect_to view_course_details_path, notice: 'User was successfully removed.' 
+    if (@user.role == 0)
+      redirect_to view_course_details_path, notice: 'User was successfully removed.' 
+    else
+      redirect_to view_courses_path, notice: 'Course was successfully removed.'
+    end
   end
 
 
@@ -97,14 +100,23 @@ class CoursesController < ApplicationController
       
       if @courseUser.save
         redirect_to courses_path, notice: "The course has been joined"
+        #Does not save becuase relationship between user and course has already been created
       else
-        flash[:alert] = "could not join course"
+        flash[:alert] = "Course has already been joined"
         if Current.user.role == 1
           render "courses/user"
         else
           render "courses/admin"
         end
       end
+    #course2Add will be nil becuase it does not exist in db
+    else
+      flash[:alert] = "Course does not exist"
+        if Current.user.role == 1
+          render "courses/user"
+        else
+          render "courses/admin"
+        end
     end
   end
 

@@ -24,12 +24,10 @@
     </tr>
   </thead>
   <tbody>
-    <% Current.user.courses.each do |c|%>
+    <% Current.user.courses.order(:course_name).each do |c|%>
     <tr>
       <td><%= c.course_name %></td>
-      <% if Current.user.role == 1%>
-        <td> Leave <td>
-      <%end%>
+      <td><%= button_to "Leave", remove_course_users_path(id: c.id, user_id: Current.user.id), class: "btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <%end%>
   </tbody>
