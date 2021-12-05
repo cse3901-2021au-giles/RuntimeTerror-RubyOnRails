@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<!-- Lets layout know what the title is-->
+<% content_for :title, @course.course_name%>
+
+<h3> Students </h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">First Name </th>
+      <th scope="col">Last Name </th>
+      <th scope="col">Email </th>
+      <th scope="col">Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@course.users.each do |u|%>
+      <%unless Current.user == u%>
+      <tr>
+        <td><%= u.fname%> </td>
+        <td><%= u.lname%> </td>
+        <td><%= u.email%> </td>
+        <td><%= button_to "Remove User", remove_course_users_path(course_id: @course.id, user_id: u.id), class: "btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+
+      <%end%>
+    <%end%>
+
+  </tbody>
+
+</table>
+
+<%= link_to 'Back', view_courses_path %>

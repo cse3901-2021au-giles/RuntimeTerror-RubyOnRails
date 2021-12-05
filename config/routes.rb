@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   delete '/courses/:id', to: "courses#destroy", as: :destroy_course
   get '/courses', to: "courses#index", as: :view_courses
   post '/courses', to: "courses#addCourseUser"
+  get '/courses/:id', to: "courses#show_course_details", as: :view_course_details
+  delete '/courses/:id/:user_id', to: "courses#remove_course_users", as: :remove_course_users
 
 
 

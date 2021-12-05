@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :remove_course_users, :show_course_details, :edit, :update, :destroy]
 
   # GET /courses
   # GET /courses.json
@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
     #@courses = Course.all
   end
 
-
+  # For use by user to leave a course
   def removeCourseUser
   end
 
@@ -47,6 +47,25 @@ class CoursesController < ApplicationController
       else
         render :new
       end
+  end
+
+  def show_course_details
+    @course = Course.find(params[:id])
+    #render "courses/show_course_details"
+  end
+
+  # For use by admin to remove a user from a course
+  def remove_course_users
+    @user = User.find(params[:user_id])
+    #render plain: @user.fname
+    @course.users.delete(@user)
+    #@course.teams.each do |t|
+      #t.users.delete(@user)
+    #end 
+    #@cu2delete = CoursesUser.find_by(course_id: @course.id, user_id: params[:user_id])
+    #@cu2delete.destroy
+    redirect_to view_course_details_path, notice: 'User was successfully removed.' 
+
   end
 
   # POST /courses
