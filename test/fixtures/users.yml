@@ -5,11 +5,11 @@ one:
   fname: MyString
   lname: MyString
   role: 1
-  password: MyString
+  password_digest: MyString
 
 two:
   email: MyString
   fname: MyString
   lname: MyString
   role: 1
-  password: MyString
+  password_digest: MyString
