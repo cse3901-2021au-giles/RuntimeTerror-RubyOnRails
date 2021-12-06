@@ -2,6 +2,9 @@
 
 <!-- Lets layout know what the title is-->
 <% content_for :title, "Admin Feedback"%>
+
+<%= button_to "Create New Feedback", new_feedback_path, class: "btn btn-primary", method: :get %>
+
 <% if Current.user.courses.empty? %>
   <p>No feedbacks!</p>
 <% end %>

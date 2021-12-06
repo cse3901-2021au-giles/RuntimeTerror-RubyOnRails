@@ -7,6 +7,30 @@ class FeedbackController < ApplicationController
     end
   end
 
+  def new
+    @checkpoint = Checkpoint.new
+    @feedback = Feedback.new
+
+  end
+
+  def create
+    @checkpoint = Checkpoint.new(checkpoint_params)
+      if @checkpoint.save
+        # Add admin to newly created course. Creates a new record in CoursesUser
+        Team.find_by(id: @checkpoint.team_id).users.each do |ou|
+          Team.find_by(id: @checkpoint.team_id).users.each do |iu|
+            unless ou == iu
+              @feedback = Feedback.new(giveuser_id: ou.id, receiveuser_id: iu.id, body: "", score: 0, done: false, checkpoint_id: @checkpoint.id)
+              @feedback.save
+            end
+          end
+        end
+        redirect_to feedback_path, notice: 'Feedback was successfully created.'
+      else
+        render :new
+      end
+  end
+
   def completed
     @checkpoint = Checkpoint.find(params[:id]) #Current checkpoint
     unless Current.user.role == 0 || @checkpoint.team.users.include?(Current.user) 
@@ -40,5 +64,9 @@ class FeedbackController < ApplicationController
   private 
   def feedback_params
     params.require(:feedback).permit(:score, :body, :id, :done)
+  end
+
+  def checkpoint_params
+    params.require(:checkpoint).permit(:team_id, :checkpoint_name)
   end
 end
