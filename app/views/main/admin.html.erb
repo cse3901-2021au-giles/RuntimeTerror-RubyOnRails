@@ -3,28 +3,43 @@
 <% if @completed_checkpoints.empty? %>
   <p>No checkpoints are finished!</p>
 <% else %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Course</th>
-        <th scope="col">Team</th>
-        <th scope="col">Checkpoint</th>
-        <th scope="col">Due Date</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @completed_checkpoints.each do |cc| %>
-        <tr>
-          <td><%= cc.course.course_name %></td>
-          <td><%= cc.team.team_name %></td>
-          <td><%= cc.checkpoint_name %></td>
-          <td><%= cc.due_date %></td>
-          <%# signup_path -> survey_path%>
-          <%# in the survey_path folder, assign Current.checkpoint%>
-          <td><%= button_to "Return Survey", signup_path, params: {checkpoint: cc.id}, class: "btn btn-primary", method: :get %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <% Current.user.courses.each do |course| %>
+    <h3><%= course.course_name %>
+    <% course.teams.each do |team| %>
+      <h4><%= team.team_name%></h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Checkpoint</th>
+            <th scope="col">Give User</th>
+            <th scope="col">Receive User</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Comments</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% team.checkpoints.each do |cp| %>
+            
+              <% team.users.each do |user| %>
+                <% Feedback.where(checkpoint_id: cp.id, giveuser_id: user.id, done: true).each do |f| %>
+                <tr>
+                  <td><%= f.checkpoint_id %></td>
+                  <td><%= f.giveuser.fname %></td>
+                  <td><%= f.receiveuser.fname %></td>
+                  <td><%= f.score %></td>
+                  <td><%= f.body %></td>
+                  <td><%= button_to "Return Feedback", feedback_completed_path(cp.id), class: "btn btn-primary", method: :get %></td>
+                </tr>
+                <% end %>
+              <% end %>
+              
+              
+
+            
+          <% end %>
+        </tbody>
+      </table> 
+    <% end %>
+  <% end %>
 <% end %>
