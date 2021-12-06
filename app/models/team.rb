@@ -6,8 +6,11 @@ class Team < ApplicationRecord
   has_many :users, :through => :TeamsUsers, :source => :user
   has_many :checkpoints
 
+  validates :team_name, presence: true
 
-  # Ensure unique combination of tid and course
-  #validates_uniqueness_of :tid, scope: %i[course_id]
+
+  # Ensure unique combination of team name and course
+  # Cannot have duplicate team names in the same course
+  validates_uniqueness_of :team_name, scope: %i[course_id]
 
 end

@@ -23,18 +23,27 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.create(course_id: create_params[:course_id], team_name: create_params[:name])
-    #render html: params[:students]
-    params[:students].each do |sid|
-      TeamsUser.create(team_id: @team.id, user_id: sid)
+    @team = Team.new(course_id: create_params[:course_id], team_name: create_params[:name])
+    if @team.save
+      # Create TeamsUser relationships for the successfully created team
+      params[:students].each do |sid|
+        TeamsUser.create(team_id: @team.id, user_id: sid)
+      end
+      redirect_to teams_path, notice: "Successfully created team: #{create_params[:name]}"
+    else
+      # If the team name was empty or is a duplicate, redirect to the form
+      redirect_to teams_create_url(course: create_params[:course_id]), alert: "Team Name cannot be empty or duplicate"
     end
 
-    redirect_to teams_path, notice: "Successfully created team: #{create_params[:name]}"
   end
 
   private
   def delete_params
     params.permit(:id)
+  end
+
+  def createFlash
+    flash.alert = "Team Name cannot be empty or duplicate"
   end
 
   def create_params
