@@ -24,7 +24,7 @@
               <% team.users.each do |user| %>
                 <% Feedback.where(checkpoint_id: cp.id, giveuser_id: user.id, done: true).each do |f| %>
                 <tr>
-                  <td><%= f.checkpoint_id %></td>
+                  <td><%= f.checkpoint.checkpoint_name %></td>
                   <td><%= f.giveuser.fname %></td>
                   <td><%= f.receiveuser.fname %></td>
                   <td><%= f.score %></td>
