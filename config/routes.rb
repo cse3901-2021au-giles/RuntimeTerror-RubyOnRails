@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
 
   #Configuration for received user feedback page
+  get '/feedback/new', to: "feedback#new", as: :new_feedback
+  post '/feedback/new', to: "feedback#create", as: :create_feedback
   get '/feedback', to: 'feedback#index'
   get '/feedback/completed/:id', to: 'feedback#completed', as: :feedback_completed
   get '/feedback/form', to: 'feedback#form', as: :form

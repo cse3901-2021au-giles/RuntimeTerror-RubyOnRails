@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_04_221236) do
+ActiveRecord::Schema.define(version: 2021_12_06_172947) do
 
   create_table "checkpoints", force: :cascade do |t|
     t.integer "team_id", null: false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_12_04_221236) do
 
   create_table "teams", force: :cascade do |t|
     t.integer "course_id", null: false
-    t.string "team_name"
+    t.string "team_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
