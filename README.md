@@ -1,32 +1,9 @@
 # RuntimeTerror-RubyOnRails
-> Jack Garry, Matthew Hu, Kevin Wang, Luke Wilcox
+> Contributors (RuntimeTerror): Jack Garry, Matthew Hu, Kevin Wang, Luke Wilcox
 
 RuntimeTerror-RubyOnRails is a peer evaluation tool that allows teams to provide feedback for each other.
 
 This project allows admins to create their own courses with unique class codes that users can use to join the course. The admin will be able to sort the users into groups and assign feedback tasks associated with checkpoints. The admin will be able to see meaningful statistics of the users' feedback and the users will be able to see anonymous feedback from their teammates.
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 ## Getting started 
 To get started with the app, first make sure you have ruby version '2.6.6' installed by running:
@@ -43,9 +20,9 @@ Then, clone the rep and then install the needed gems:
 $ bundle install --without production
 ```
 
-Next, migrate the database:
+Migrate the database and insert the seeds to populate the environment with data:
 ```
-$ rails db:migrate
+$ rails db:reset
 ```
 
 Run the test suite to verify everything is working correctly:
@@ -86,10 +63,11 @@ The admin with the most preexisting data is `giles.1@osu.edu` and the user with 
 ## Controller Contributions
 The following table is a list of controllers used in the project and who contributed to them. This is to ensure that all project members got an opportunity to work with controller code.
 | Controller File Name | Contributor(s) |
+| -------------------- | -------------- |
 | about_controller.rb | Matt |
 | application_controller.rb | Matt |
 | courses_controller.rb | Kevin, Jack |
-| feedback_controller.rb | Matt, Luke |
+| feedback_controller.rb | Luke, Matt |
 | main_controller.rb | Matt, Luke |
 | passwords_controller.rb | Matt |
 | registrations_controller.rb | Matt |

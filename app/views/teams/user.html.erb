@@ -1,3 +1,4 @@
+<% provide(:title, Current.user.fname + "'s Teams") %>
 <% Current.user.courses.each do |course| %>
     <span>
     <h3>Course: <%= course.course_name%></h3>
