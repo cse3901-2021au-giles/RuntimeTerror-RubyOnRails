@@ -67,6 +67,6 @@ class FeedbackController < ApplicationController
   end
 
   def checkpoint_params
-    params.require(:checkpoint).permit(:team_id, :checkpoint_name)
+    params.require(:checkpoint).permit(:team_id, :checkpoint_name, :due_date)
   end
 end
