@@ -11,12 +11,14 @@
       </thead>
       <tbody>
     <% course.teams.each do |team| %>
-      <tr>
-        <td><b><%= team.team_name %></b></td>
-          <% team.users.each do | user| %>
-            <td><%= user.fname + " " + user.lname %></td>
-          <% end %>
-      </tr>
+      <% if team.users.exists?(id: Current.user.id) %>
+        <tr>
+          <td><b><%= team.team_name %></b></td>
+            <% team.users.each do | user| %>
+              <td><%= user.fname + " " + user.lname %></td>
+            <% end %>
+        </tr>
+      <% end %>
     <% end %>
       </tbody>
     </table>
