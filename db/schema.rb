@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2021_12_04_221236) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.integer "tid", null: false
     t.integer "course_id", null: false
     t.string "team_name"
     t.datetime "created_at", precision: 6, null: false

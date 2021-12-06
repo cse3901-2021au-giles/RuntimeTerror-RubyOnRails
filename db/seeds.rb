@@ -26,9 +26,9 @@ users = User.create! ([
         ])
 
 teams = Team.create! ([
-        {id: "1", tid: "1", course_id: "1", team_name:"RuntimeTerror"},
-        {id: "2", tid: "2", course_id: "1", team_name:"Team Peach"},
-        {id: "3", tid: "3", course_id: "1", team_name:"Team Luigi"},
+        {id: "1", course_id: "1", team_name:"RuntimeTerror"},
+        {id: "2", course_id: "1", team_name:"Team Peach"},
+        {id: "3", course_id: "1", team_name:"Team Luigi"},
         ])
 
 checkpoints = Checkpoint.create!([

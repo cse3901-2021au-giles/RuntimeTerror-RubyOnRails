@@ -8,6 +8,6 @@ class Team < ApplicationRecord
 
 
   # Ensure unique combination of tid and course
-  validates_uniqueness_of :tid, scope: %i[course_id]
+  #validates_uniqueness_of :tid, scope: %i[course_id]
 
 end

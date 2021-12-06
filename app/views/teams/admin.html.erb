@@ -7,16 +7,18 @@
     <thead>
       <tr>
         <th scope="col">Team</th>
+        <th scope="col">Delete</th>
         <th scope="col">Members</th>
       </tr>
     </thead>
     <tbody>
   <% course.teams.each do |team| %>
     <tr>
-      <td><p><%= team.team_name %></p></td>
-        <% team.users.each do | user| %>
-          <td><%= user.fname + " " + user.lname %></td>
-        <% end %>
+      <td><%= team.team_name %></td>
+      <td><%= button_to "Delete", teams_path, class: "btn btn-primary", method: :delete, params: {id: team.id} %></td>
+      <% team.users.each do | user| %>
+        <td><%= user.fname + " " + user.lname %></td>
+      <% end %>
     </tr>
   <% end %>
     </tbody>
