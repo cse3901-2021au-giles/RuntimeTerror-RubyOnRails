@@ -1,4 +1,7 @@
 class CoursesController < ApplicationController
+  # Require user to be logged in
+  before_action :require_user_logged_in!
+
   before_action :set_course, only: [:show, :remove_course_users, :show_course_details, :edit, :update, :destroy]
   before_action :set_user, only: [:remove_course_users]
 
@@ -17,11 +20,6 @@ class CoursesController < ApplicationController
   def removeCourseUser
   end
 
-  # Unused
-  # GET /courses/1
-  # GET /courses/1.json
-  def show
-  end
 
   # Get course creation form
   # GET /courses/new
@@ -30,10 +28,6 @@ class CoursesController < ApplicationController
     @courseAdmin = CoursesUser.new
   end
 
-  # Unused
-  # GET /courses/1/edit
-  def edit
-  end
 
   # Create a new course based on the course creation form
   # POST /courses/new
@@ -107,21 +101,6 @@ class CoursesController < ApplicationController
     #course2Add will be nil becuase it does not exist in db
     else
       redirect_to courses_path, alert: "Course does not exist.  Try again!"
-    end
-  end
-
-  # Unused
-  # PATCH/PUT /courses/1
-  # PATCH/PUT /courses/1.json
-  def update
-    respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
-      else
-        format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
     end
   end
 

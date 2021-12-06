@@ -20,8 +20,6 @@ Rails.application.routes.draw do
   delete '/courses/:id/:user_id', to: "courses#remove_course_users", as: :remove_course_users
 
 
-
-
   #Configuration for received user feedback page
   get '/feedback/new', to: "feedback#new", as: :new_feedback
   post '/feedback/new', to: "feedback#create", as: :create_feedback

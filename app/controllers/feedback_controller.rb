@@ -1,4 +1,7 @@
 class FeedbackController < ApplicationController
+  # Require user to be logged in
+  before_action :require_user_logged_in!
+
   def index #Current.user must exist so no if statement needed
     if Current.user.role == 1
       render "feedback/user_feedback"
