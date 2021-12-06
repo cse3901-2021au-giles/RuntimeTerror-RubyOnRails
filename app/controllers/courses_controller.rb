@@ -2,24 +2,20 @@ class CoursesController < ApplicationController
   # Require user to be logged in
   before_action :require_user_logged_in!
 
+  # Get the specific course and user that will be used
   before_action :set_course, only: [:show, :remove_course_users, :show_course_details, :edit, :update, :destroy]
   before_action :set_user, only: [:remove_course_users]
 
   # Render the proper course view page depending on the user role
   # GET /courses
-  # GET /courses.json
   def index
+    # Render the courses page based on user role
     if Current.user.role == 1
       render "courses/user"
     else
       render "courses/admin"
     end
   end
-
-  # For use by user to leave a course
-  def removeCourseUser
-  end
-
 
   # Get course creation form
   # GET /courses/new
@@ -32,7 +28,7 @@ class CoursesController < ApplicationController
   # Create a new course based on the course creation form
   # POST /courses/new
   def create
-    @course = Course.new(course_params)
+    @course = Course.new(course_params) #Current course
       if @course.save
         # Add admin to newly created course. Creates a new record in CoursesUser
         @courseAdmin = CoursesUser.new(course_id: @course.id, user_id: Current.user.id)
@@ -71,7 +67,7 @@ class CoursesController < ApplicationController
       end
       
       # remove user from any team that the user is currently a part of (deletes record from TeamsUser)
-      t.users.destroy(@user) #Comment out this line to allow users to view previous feedbacks
+      t.users.destroy(@user)
     end 
     if (@user.role == 0)
       redirect_to view_course_details_path, notice: 'User was successfully removed.' 
@@ -81,7 +77,7 @@ class CoursesController < ApplicationController
   end
 
 
-  # User: Add a user to a course (add record to CoursesUser)
+  # User: Join a course (add record to CoursesUser)
   # User view
   # POST /courses
   def add_course_user

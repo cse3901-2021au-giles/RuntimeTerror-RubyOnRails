@@ -1,13 +1,14 @@
 class Team < ApplicationRecord
   belongs_to :course
-    # Useless?: foreign_key: 'course_id'
 
   has_many :TeamsUsers
-  has_many :users, :through => :TeamsUsers, :source => :user
   has_many :checkpoints
 
-  validates :team_name, presence: true
+  # Many to many relationship between course and users
+  has_many :users, :through => :TeamsUsers, :source => :user
 
+  # Ensures that team name cannot be null
+  validates :team_name, presence: true
 
   # Ensure unique combination of team name and course
   # Cannot have duplicate team names in the same course
