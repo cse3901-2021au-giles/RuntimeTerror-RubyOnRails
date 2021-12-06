@@ -1,1 +1,20 @@
 This is the teams page
+<% provide(:title, "Create Teams") %>
+
+<%= form_with url: teams_create_path do |form| %>
+  <div class="mb-3">
+    <%= form.label :team_name %> 
+    <%= form.text_field :name, class: "form-control", placeholder: "Insert team name" %>
+  </div>
+  <h5>Select students to be in the team below.</h5>
+  <%= form.collection_check_boxes(:students, @hash, :last, :first) do |b| %>
+    <div class="form-check">
+      <%= b.check_box class: "form-check-input"%>
+      <%= b.label class: "form-check-label"%>
+    </div>
+  <% end %>
+  <%= form.hidden_field :course_id, value: @course.id %>
+  <div class="mb-3">
+    <%= form.submit "Sign Up", class: "btn btn-primary" %>
+  </div>
+<% end %>

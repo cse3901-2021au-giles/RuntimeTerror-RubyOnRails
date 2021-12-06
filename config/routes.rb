@@ -32,8 +32,9 @@ Rails.application.routes.draw do
 
   #Configuration for Teams tab
   get '/teams', to: 'teams#index'
+  delete '/teams', to: 'teams#delete'
   get '/teams/create', to: 'teams#team'
-  #post '/teams/create', to: 'teams#create'
+  post '/teams/create', to: 'teams#create'
 
 
   #resources :users
