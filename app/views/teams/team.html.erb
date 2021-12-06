@@ -1,8 +1,6 @@
-This is the teams page
 <% provide(:title, "Create Teams") %>
 
-
-<%= form_with url: teams_create_path(course: @course.id) do |form| %>
+<%= form_with url: teams_create_path do |form| %>
   <div class="mb-3">
     <%= form.label :team_name %> 
     <%= form.text_field :name, class: "form-control", placeholder: "Insert team name" %>
