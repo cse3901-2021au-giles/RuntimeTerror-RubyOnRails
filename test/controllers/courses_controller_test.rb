@@ -2,70 +2,37 @@ require "test_helper"
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    # @student = User.create! ({id: "1", email: "dude@osu.edu", fname: "Matthew", lname: "Hu", role: "1", password:"password", password_confirmation:"password"})
-    # @admin = User.create! ({id: "2", email: "partner@osu.edu", fname: "Charlie", lname: "Giles", role: "0", password:"password", password_confirmation:"password"})
-    # @student = users(:student))
-    Devise.sign_in :user, users(:student)
-    #@admin = users(:two)
-    
-    # @course = courses(:one)
+    user = users(:admin)
+    get login_path 
+    post login_path, params: {email: user.email, password: "password" }
+    get courses_url
   end
 
-
-  test "should get user course page" do
-    
-    #post login_path(email: @student.email, password: @student.password)
+  test "navigate to user: courses/" do
+    user = users(:student)
+    delete logout_path
+    get login_path 
+    post login_path, params: {email: user.email, password: "password" }
+    get root_path 
     get courses_url
+    assert_template 'courses/user'
     assert_response :success
   end
 
-  # test "should get admin course page" do
-  #   #sign_in @admin
-  #   #post login_path(email: @admin.email, password: @admin.password)
-  #   get view_courses_url
-  #   assert_response :success
-  # end
+  test "navigate to admin: courses/" do
+    assert_template 'courses/admin'
+    assert_response :success
+  end
 
+  test "navigate to admin: courses/1" do
+    get '/courses/1'
+    assert_template 'courses/show_course_details'
+    assert_response :success
+  end
 
-
-  # test "should get index" do
-  #   get courses_url
-  #   assert_response :success
-  # end
-
-  # test "should get new" do
-  #   get new_course_url
-  #   assert_response :success
-  # end
-
-  # test "should create course" do
-  #   assert_difference('Course.count') do
-  #     post registrations_new_paths, params: { course: { admin_code: @course.admin_code, class_code: @course.class_code, course_name: @course.course_name } }
-  #   end
-
-  #   assert_redirected_to course_url(Course.last)
-  # end
-
-  # test "should show course" do
-  #   get view_course_details_path(@course)
-  #   assert_response :success
-  # end
-
-  # test "should get edit" do
-  #   get edit_course_url(@course)
-  #   assert_response :success
-  # end
-
-  # test "should update course" do
-  #   patch course_url(@course), params: { course: { admin_code: @course.admin_code, class_code: @course.class_code, course_name: @course.course_name } }
-  #   assert_redirected_to course_url(@course)
-  # end
-
-  # test "should destroy course" do
-  #   assert_difference('Course.count', -1) do
-  #     delete course_url(@course)
-  #   end
-
-  #   assert_redirected_to courses_url
-  # end
+  test "navigate to admin: courses/new" do
+    get '/courses/new'
+    assert_template 'courses/new'
+    assert_response :success
+  end
 end

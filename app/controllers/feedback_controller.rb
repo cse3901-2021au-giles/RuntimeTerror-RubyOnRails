@@ -13,7 +13,6 @@ class FeedbackController < ApplicationController
   def new
     @checkpoint = Checkpoint.new
     @feedback = Feedback.new
-
   end
 
   def create

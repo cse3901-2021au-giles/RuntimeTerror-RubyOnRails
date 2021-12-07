@@ -13,4 +13,4 @@ admin:
   fname: "Charlie"
   lname: "Giles"
   role: 0
-  password_digest: "password"
+  password_digest:  <%= BCrypt::Password.create("password") %>
