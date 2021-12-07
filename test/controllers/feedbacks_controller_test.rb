@@ -26,11 +26,11 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "navigate to admin: feedback/new" do
-    get new_feedback_path
-    assert_template 'feedback/new'
-    assert_response :success
-  end
+  #test "navigate to admin: feedback/new" do
+    #get new_feedback_path
+    #assert_template 'feedback/new'
+    #assert_response :success
+  #end
 
   #test "navigate to admin: feedback/completed/1" do
     #get '/feedback/completed/1'

@@ -39,10 +39,13 @@ class FeedbackController < ApplicationController
             end
           end
         end
+      else
+        redirect_to feedback_path, alert: "Unsuccessful Feedback Creation: Must Assign to Team(s)"
+        return
       end
     end
 
-    redirect_to feedback_path, notice: 'Feedback was successfully created.'
+    redirect_to feedback_path, notice: 'Feedback was Successfully Created.'
   end
 
   # GET Admin/User - Completed checkpoints

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_06_172947) do
+ActiveRecord::Schema.define(version: 2021_12_07_212047) do
 
   create_table "checkpoints", force: :cascade do |t|
     t.integer "team_id", null: false
@@ -67,11 +67,11 @@ ActiveRecord::Schema.define(version: 2021_12_06_172947) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "fname"
-    t.string "lname"
-    t.integer "role"
-    t.string "password_digest"
+    t.string "email", null: false
+    t.string "fname", null: false
+    t.string "lname", null: false
+    t.integer "role", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

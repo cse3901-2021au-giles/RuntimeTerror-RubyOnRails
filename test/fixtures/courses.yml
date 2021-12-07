@@ -5,3 +5,9 @@ one:
   course_name: "CSE3901"
   class_code: "cse3901"
   admin_code: "cse3901"
+
+two:
+  id: 2
+  course_name: "CSE3902"
+  class_code: "cse3902"
+  admin_code: "cse3902"

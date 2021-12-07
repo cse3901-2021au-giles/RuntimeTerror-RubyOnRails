@@ -69,7 +69,7 @@ class CoursesController < ApplicationController
       # remove user from any team that the user is currently a part of (deletes record from TeamsUser)
       t.users.destroy(@user)
     end 
-    if (@user.role == 0)
+    if (Current.user.role == 0)
       redirect_to view_course_details_path, notice: 'User was successfully removed.' 
     else
       redirect_to view_courses_path, notice: 'Course was successfully removed.'

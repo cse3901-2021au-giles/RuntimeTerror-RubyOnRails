@@ -1,6 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   giveuser_id: 1
   receiveuser_id: 2
   done: true
@@ -9,6 +10,7 @@ one:
   checkpoint_id: 1
 
 two:
+  id: 2
   giveuser_id: 2
   receiveuser_id: 1
   done: true

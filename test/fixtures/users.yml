@@ -1,6 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 student:
+  id: "1"
   email: "wang.12470@osu.edu"
   fname: "Kevin"
   lname: "Wang"
@@ -9,8 +10,18 @@ student:
   # password: "password"
 
 admin:  
+  id: "2"
   email: "giles.1@osu.edu"  
   fname: "Charlie"
   lname: "Giles"
   role: 0
   password_digest:  <%= BCrypt::Password.create("password") %>
+
+student2:
+  id: "3"
+  email: "hu.2056@osu.edu"
+  fname: "Matthew"
+  lname: "Hu"
+  role: 1
+  password_digest:  <%= BCrypt::Password.create("password") %>
+  # password: "password"

@@ -3,9 +3,9 @@
 one:
   id: 1
   course_id: 1
-  team_name: MyString
+  team_name: Runtime Terror
 
 two:
   id: 2
   course_id: 1
-  team_name: MyString
+  team_name: Team Peach

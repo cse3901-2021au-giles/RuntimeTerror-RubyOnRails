@@ -22,12 +22,12 @@ class CourseTest < ActiveSupport::TestCase
   end
 
   test "invalid with duplicate class code" do
-    course = Course.new(id: "3", course_name:"DupeClassCode", class_code: "MyString2", admin_code:"MyString4")
+    course = Course.new(id: "3", course_name:"DupeClassCode", class_code: "cse3901", admin_code:"MyString3")
     refute course.valid?, "course is valid with a duplicate class code"
   end
 
   test "invalid with duplicate admin code" do
-    course = Course.new(id: "3", course_name: "DupeAdminCode", class_code: "MyString234", admin_code:"MyString2")
+    course = Course.new(id: "3", course_name: "DupeAdminCode", class_code: "MyString3", admin_code:"cse3901")
     refute course.valid?, "course is valid with a duplicate admin code"
   end
 end
