@@ -60,6 +60,16 @@ vanhoose.3@osu.edu
 
 The admin with the most preexisting data is `giles.1@osu.edu` and the user with the most preexisting data is `wang.12470@osu.edu`
 
+## Model Organization
+The models for the peer evaluation utilized a hierarchical structure of one to many relationships. Courses can have many teams, but a team must have an associated course. Teams can have many checkpoints, but a checkpoint must have an associated team. Checkpoints can have many feedbacks, but a feedback must have an associated checkpoint. This helps simplify the model. 
+
+Feedbacks are entities that contain a singular feedback instance from an individual user to another individual user. For two users to leave feedback for each other, there will be two Feedbacks, one from user A to user B, and the other from user B to user A. Checkpoints can be thought of as "feedback groups" that contain the feedbacks for an individual team and a particular situation. Teams can have many checkpoints, for example a checkpoint for each project that a team may do, or a multiple checkpoints during the lifespan of a single project. This way, admins have the ability to give teams opportunities to provide feedback to each other multiple times within the same project/operation. 
+
+## Views Organization
+![User Admin View Separation](https://github.com/cse3901-2021au-giles/RuntimeTerror-RubyOnRails/blob/main/viewSeparation_user-admin.png?raw=true)
+
+The image above illustrates how the views are separated between admins and users. Admin views are different from user views, so different embedded ruby files were used to render each one. Admins get more information in each of their views (shown on the bottom) while the users get a more limited view on their pages. For each of the resources, Home(main), Feedback, Course, and Team, there is a respective user.html.erb and admin.html.erb file, allowing for the separation of views.
+
 ## Controller Contributions
 The following table is a list of controllers used in the project and who contributed to them. This is to ensure that all project members got an opportunity to work with controller code.
 | Controller File Name | Contributor(s) |
@@ -72,4 +82,14 @@ The following table is a list of controllers used in the project and who contrib
 | passwords_controller.rb | Matt |
 | registrations_controller.rb | Matt |
 | sessions_controller.rb | Matt, Luke |
-| teams_controller.rb | Matt |
+| teams_controller.rb | Matt, Kevin|
+
+## Future Implementations
+Given another couple months, the team would like to continue working on this project to implement some improvements and features:
+- Better UI utilizing JavaScript,
+  The views are currently all static using embedded ruby. In order to provide a better user experience, we plan on integrating javascript with dynamic web pages.
+- Custom Forms and Questions,
+  The feedbacks are currently limited to a score and written feedback. We would like to expand this functionality by both providing ranking questions that assess teamwork and also allowing admins to create their own questions to give to users. Additionally, allowing admins to customize the feedbacks returned to teams, witholding some questions while including some questions would greatly increase versatility.
+- Security and Controller Error Handling,
+  This is a very important feature we plan on improving in order to make the app more robust to attack. We currently already have checks in place to ensure users do not access resources without permission, however, we want to make it so even insidious attacks done through file manipulation and other more sophisticated break attempts cannot penetrate our security.
+
