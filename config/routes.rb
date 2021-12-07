@@ -36,7 +36,6 @@ Rails.application.routes.draw do
   get '/teams/create', to: 'teams#team'
   post '/teams/create', to: 'teams#create'
 
-
   #resources :users
   #resources :feedbacks
   #resources :teams

@@ -2,16 +2,16 @@
 
 one:
   giveuser_id: 1
-  receiveuser_id: 1
-  done: false
+  receiveuser_id: 2
+  done: true
   body: MyText
-  score: 0
+  score: 10
   checkpoint_id: 1
 
 two:
-  giveuser_id: 1
+  giveuser_id: 2
   receiveuser_id: 1
-  done: false
+  done: true
   body: MyText
-  score: 0
+  score: 10
   checkpoint_id: 1
