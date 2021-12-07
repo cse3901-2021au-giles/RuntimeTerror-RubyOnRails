@@ -65,6 +65,8 @@ The models for the peer evaluation utilized a hierarchical structure of one to m
 
 Feedbacks are entities that contain a singular feedback instance from an individual user to another individual user. For two users to leave feedback for each other, there will be two Feedbacks, one from user A to user B, and the other from user B to user A. Checkpoints can be thought of as "feedback groups" that contain the feedbacks for an individual team and a particular situation. Teams can have many checkpoints, for example a checkpoint for each project that a team may do, or a multiple checkpoints during the lifespan of a single project. This way, admins have the ability to give teams opportunities to provide feedback to each other multiple times within the same project/operation. 
 
+Courses have both a class code and an admin code. The class codes are to be utilized by users while the admin code is to be used by other admins to join a course. the admin code is currently not in use, however future plans involve allowing multiple admins in a single course with heightened privileges.
+
 ## Views Organization
 ![User Admin View Separation](https://github.com/cse3901-2021au-giles/RuntimeTerror-RubyOnRails/blob/main/viewSeparation_user-admin.png?raw=true)
 
