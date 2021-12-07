@@ -24,7 +24,13 @@
             <tr>
               <td><%= cp.checkpoint_name %></td>
               <% team.users.each do |user| %>
-                <td><%= cp.feedbacks.where(receiveuser_id: user.id).average(:score) %></td>
+                <td>
+                <% if (avg = cp.feedbacks.where(receiveuser_id: user.id, done: true).average(:score)) %>
+                  <%= avg %>
+                <% else %>
+                  -
+                <% end %>
+                </td>
               <% end %>
             </tr>
           <% end %>
@@ -49,7 +55,13 @@
             <tr>
               <td><%= cp.checkpoint_name %></td>
               <% team.users.each do |user| %>
-                <td><%= cp.feedbacks.where(giveuser_id: user.id).average(:score) %></td>
+                <td>
+                <% if (avg = cp.feedbacks.where(giveuser_id: user.id, done: true).average(:score)) %>
+                  <%= avg %>
+                <% else %>
+                  -
+                <% end %>
+                </td>
               <% end %>
             </tr>
           <% end %>
