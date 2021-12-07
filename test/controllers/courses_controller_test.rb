@@ -2,17 +2,31 @@ require "test_helper"
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @student = User.create! ({id: "1", email: "hu.2056@osu.edu", fname: "Matthew", lname: "Hu", role: "1", password:"password", password_confirmation:"password"})
-    @admin = users(:two)
-    @course = courses(:one)
+    # @student = User.create! ({id: "1", email: "dude@osu.edu", fname: "Matthew", lname: "Hu", role: "1", password:"password", password_confirmation:"password"})
+    # @admin = User.create! ({id: "2", email: "partner@osu.edu", fname: "Charlie", lname: "Giles", role: "0", password:"password", password_confirmation:"password"})
+    # @student = users(:student))
+    Devise.sign_in :user, users(:student)
+    #@admin = users(:two)
+    
+    # @course = courses(:one)
   end
 
 
   test "should get user course page" do
-    post login_path(email: @student.email, password: @student.password)
-    get view_courses_url
+    
+    #post login_path(email: @student.email, password: @student.password)
+    get courses_url
     assert_response :success
   end
+
+  # test "should get admin course page" do
+  #   #sign_in @admin
+  #   #post login_path(email: @admin.email, password: @admin.password)
+  #   get view_courses_url
+  #   assert_response :success
+  # end
+
+
 
   # test "should get index" do
   #   get courses_url
