@@ -1,15 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
-  fname: MyString
-  lname: MyString
+  email: "wang.12470@osu.edu"
+  fname: "Kevin"
+  lname: "Wang"
   role: 1
-  password_digest: MyString
+  password_digest: "password"
 
-two:
-  email: MyString
-  fname: MyString
-  lname: MyString
-  role: 1
-  password_digest: MyString
+two:  
+  id: 5
+  email: giles.1@osu.edu  
+  fname: Charlie
+  lname: Giles
+  role: 0
+  password_digest: password
