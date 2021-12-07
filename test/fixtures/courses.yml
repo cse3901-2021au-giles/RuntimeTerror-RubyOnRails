@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  course_name: MyString
-  class_code: MyString
-  admin_code: MyString
+  course_name: MyString1
+  class_code: MyString1
+  admin_code: MyString1
 
 two:
-  course_name: MyString
-  class_code: MyString
-  admin_code: MyString
+  course_name: MyString2
+  class_code: MyString2
+  admin_code: MyString2
