@@ -19,24 +19,23 @@ class FeedbackController < ApplicationController
   end
 
   def create
-    @selected = params[:teams]
-    @selected.each do |tid|
-      @checkpoint = Checkpoint.new(team_id: tid, checkpoint_name: create_params[:checkpoint_name], due_date: create_params[:due_date])
+    @team_ids = params[:teams]
     
-      if @checkpoint.save
-        # Add admin to newly created course. Creates a new record in CoursesUser
-        Team.find_by(id: @checkpoint.team_id).users.each do |ou|
-          Team.find_by(id: @checkpoint.team_id).users.each do |iu|
-            unless ou == iu
-              @feedback = Feedback.new(giveuser_id: ou.id, receiveuser_id: iu.id, body: "", score: 0, done: false, checkpoint_id: @checkpoint.id)
-              @feedback.save
+    @team_ids.each do |team_id|
+      unless team_id.empty?
+        team = Team.find(team_id)
+        checkpoint = team.checkpoints.create(checkpoint_params)
+        students = team.users 
+        students.each do |student1|
+          students.each do |student2|
+            unless student1 == student2
+              checkpoint.feedbacks.create(giveuser_id: student1.id, receiveuser_id: student2.id, body: "", score: 0, done: false)
             end
           end
         end
-      else
-        render :new
       end
     end
+
     redirect_to feedback_path, notice: 'Feedback was successfully created.'
   end
 
@@ -79,7 +78,7 @@ class FeedbackController < ApplicationController
     params.permit(:teams, :checkpoint_name, :due_date)
   end
 
-  #def checkpoint_params
-  #  params.require(:checkpoint).permit(:team_id, :checkpoint_name, :due_date)
-  #end
+  def checkpoint_params
+    params.permit(:checkpoint_name, :due_date)
+  end
 end

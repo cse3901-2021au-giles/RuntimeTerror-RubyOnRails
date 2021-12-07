@@ -5,6 +5,7 @@
     <%= form.label :team_name %> 
     <%= form.text_field :name, class: "form-control", placeholder: "Insert team name" %>
   </div>
+
   <h5>Select students to be in the team below.</h5>
   <%= form.collection_check_boxes(:students, @hash, :last, :first) do |b| %>
     <div class="form-check">
@@ -12,7 +13,9 @@
       <%= b.label class: "form-check-label"%>
     </div>
   <% end %>
+
   <%= form.hidden_field :course_id, value: @course.id %>
+
   <div class="mb-3">
     <%= form.submit "Sign Up", class: "btn btn-primary" %>
   </div>
