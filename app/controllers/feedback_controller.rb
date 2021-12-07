@@ -2,6 +2,7 @@ class FeedbackController < ApplicationController
   # Require user to be logged in
   before_action :require_user_logged_in!
 
+  # GET Admin/User - redirect to feedback page
   def index #Current.user must exist so no if statement needed
     if Current.user.role == 1
       render "feedback/user_feedback"
@@ -10,7 +11,9 @@ class FeedbackController < ApplicationController
     end
   end
 
+  # GET Admin - form to create new Feedback
   def new
+    # Create hash of team names and corresponding ID's for a course
     @course = Course.find(params[:course])
     @hash = {}
     @course.teams.each do |team|
@@ -18,14 +21,17 @@ class FeedbackController < ApplicationController
     end
   end
 
+  # POST Admin - Create new Checkpoint and Feedbacks for selected teams
   def create
     @team_ids = params[:teams]
-    
+    # Iterate through selected teams to give feedback forms
     @team_ids.each do |team_id|
       unless team_id.empty?
+        # Create a new Checkpoint for a team
         team = Team.find(team_id)
         checkpoint = team.checkpoints.create(checkpoint_params)
         students = team.users 
+        # Assign students from the team new feedbacks for each teammate
         students.each do |student1|
           students.each do |student2|
             unless student1 == student2
@@ -39,6 +45,7 @@ class FeedbackController < ApplicationController
     redirect_to feedback_path, notice: 'Feedback was successfully created.'
   end
 
+  # GET Admin/User - Completed checkpoints
   def completed
     @checkpoint = Checkpoint.find(params[:id]) #Current checkpoint
     unless Current.user.role == 0 || @checkpoint.team.users.include?(Current.user) 
@@ -47,11 +54,13 @@ class FeedbackController < ApplicationController
     @feedbacks = (Current.user.role == 1) ? @checkpoint.feedbacks.where(done: true, receiveuser_id: Current.user.id) : @checkpoint.feedbacks.where(done: true)
   end
 
+  # GET User - Redirect to a Feedback form
   def form
     checkpoint = Checkpoint.find(params[:checkpoint])
     team = checkpoint.team
     @feedbacks_not_done = Feedback.where(giveuser_id: Current.user.id, done: false, checkpoint_id: checkpoint.id)
     Current.feedback = @feedbacks_not_done.to_a.first
+    # Generate form if Feedback not completed
     if Current.feedback
       @receive_user = User.find(Current.feedback.receiveuser_id)
       render "feedback/form"
@@ -60,6 +69,7 @@ class FeedbackController < ApplicationController
     end
   end
 
+  # Update Feedbacks
   def update
     @feedback = Feedback.find(feedback_params[:id])
     if @feedback.update(feedback_params)
@@ -70,6 +80,7 @@ class FeedbackController < ApplicationController
   end
 
   private 
+  # Private methods to ensure no malicious code
   def feedback_params
     params.require(:feedback).permit(:score, :body, :id, :done)
   end

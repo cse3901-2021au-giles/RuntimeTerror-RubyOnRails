@@ -29,6 +29,7 @@ class User < ApplicationRecord
   validates :fname, presence: {message: "- First Name can't be blank"}, length: { maximum: 25 }
   validates :lname, presence: {message: "- Last Name can't be blank"}, length: { maximum: 25 }
 
+  # Return Checkpoints that have not been completed
   def uncompleted_checkpoints 
     uncompleted_feedbacks = self.giveuser_feedbacks.where(done: false)
     todo_checkpoints = Set.new()
@@ -36,6 +37,7 @@ class User < ApplicationRecord
     todo_checkpoints
   end
 
+  # Return Checkpoints that have been completed
   def completed_checkpoints 
     completed_feedbacks = self.receiveuser_feedbacks.where(done: true)
     done_checkpoints = Set.new()

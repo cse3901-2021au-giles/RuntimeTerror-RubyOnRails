@@ -6,6 +6,7 @@ class Checkpoint < ApplicationRecord
   # Ensure many feedbacks point to a checkpoint
   has_many :feedbacks
 
+  # Find Course of a given Checkpoint
   def course
     Course.where(id: self.team.course_id).to_a.first
   end

@@ -16,6 +16,7 @@ class PasswordsController < ApplicationController
   end
 
   private
+  # Private methods to ensure no malicious code
   def password_params
     params.require(:user).permit(:password, :password_confirmation)
   end
