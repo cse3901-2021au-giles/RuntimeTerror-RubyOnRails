@@ -11,13 +11,18 @@ class FeedbackController < ApplicationController
   end
 
   def new
-    @checkpoint = Checkpoint.new
-    @feedback = Feedback.new
-
+    @course = Course.find(params[:course])
+    @hash = {}
+    @course.teams.each do |team|
+      @hash["#{team.team_name}"] = team.id
+    end
   end
 
   def create
-    @checkpoint = Checkpoint.new(checkpoint_params)
+    @selected = params[:teams]
+    @selected.each do |tid|
+      @checkpoint = Checkpoint.new(team_id: tid, checkpoint_name: create_params[:checkpoint_name], due_date: create_params[:due_date])
+    
       if @checkpoint.save
         # Add admin to newly created course. Creates a new record in CoursesUser
         Team.find_by(id: @checkpoint.team_id).users.each do |ou|
@@ -28,10 +33,11 @@ class FeedbackController < ApplicationController
             end
           end
         end
-        redirect_to feedback_path, notice: 'Feedback was successfully created.'
       else
         render :new
       end
+    end
+    redirect_to feedback_path, notice: 'Feedback was successfully created.'
   end
 
   def completed
@@ -69,7 +75,11 @@ class FeedbackController < ApplicationController
     params.require(:feedback).permit(:score, :body, :id, :done)
   end
 
-  def checkpoint_params
-    params.require(:checkpoint).permit(:team_id, :checkpoint_name, :due_date)
+  def create_params
+    params.permit(:teams, :checkpoint_name, :due_date)
   end
+
+  #def checkpoint_params
+  #  params.require(:checkpoint).permit(:team_id, :checkpoint_name, :due_date)
+  #end
 end

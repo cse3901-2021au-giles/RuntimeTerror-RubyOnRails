@@ -1,17 +1,11 @@
 <%= form_with(model: checkpoint, url: "new") do |form| %>
 
-    <% if form.object.errors.any?%>
-      <div class="alert alert-danger">
-        <% form.object.errors.full_messages.each do |message| %>
-          <div><%= message %></div>
-        <% end %>
+    <%= form.collection_check_boxes(:teams, @hash, :last, :first) do |b| %>
+      <div class="form-check">
+        <%= b.check_box class: "form-check-input"%>
+        <%= b.label class: "form-check-label"%>
       </div>
     <% end %>
-  
-    <div class="mb-3">
-      <%= form.label :team_id %>
-      <%= form.text_field :team_id, class: "form-control", placeholder: "0"%>
-    </div>
   
     <div class="mb-3">
       <%= form.label :checkpoint_name %>

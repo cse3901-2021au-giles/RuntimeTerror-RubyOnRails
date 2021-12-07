@@ -4,42 +4,61 @@
   <p>No checkpoints are finished!</p>
 <% else %>
   <% Current.user.courses.each do |course| %>
-    <h3><%= course.course_name %>
+    <div>
+    <h3>Course: <%= course.course_name %>
     <% course.teams.each do |team| %>
-      <h4><%= team.team_name%></h4>
+      <h4>Team: <%= team.team_name%></h4>
+      <div>
       <table class="table">
+        
         <thead>
           <tr>
             <th scope="col">Checkpoint</th>
-            <th scope="col">Give User</th>
-            <th scope="col">Receive User</th>
-            <th scope="col">Rating</th>
-            <th scope="col">Comments</th>
-            <th scope="col">Action</th>
+            <% team.users.each do |user| %>
+              <th scope="col"><%= user.fname %></th>
+            <% end %>
           </tr>
         </thead>
         <tbody>
           <% team.checkpoints.each do |cp| %>
-            
+            <tr>
+              <td><%= cp.checkpoint_name %></td>
               <% team.users.each do |user| %>
-                <% Feedback.where(checkpoint_id: cp.id, giveuser_id: user.id, done: true).each do |f| %>
-                <tr>
-                  <td><%= f.checkpoint.checkpoint_name %></td>
-                  <td><%= f.giveuser.fname %></td>
-                  <td><%= f.receiveuser.fname %></td>
-                  <td><%= f.score %></td>
-                  <td><%= f.body %></td>
-                  <td><%= button_to "Return Feedback", feedback_completed_path(cp.id), class: "btn btn-primary", method: :get %></td>
-                </tr>
-                <% end %>
+                <td><%= cp.feedbacks.where(receiveuser_id: user.id).average(:score) %></td>
               <% end %>
-              
-              
-
-            
+            </tr>
           <% end %>
+          <caption>Average Received Score</caption>
         </tbody>
       </table> 
+      </div>
+
+      <div>
+      <table class="table">
+        
+        <thead>
+          <tr>
+            <th scope="col">Checkpoint</th>
+            <% team.users.each do |user| %>
+              <th scope="col"><%= user.fname %></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% team.checkpoints.each do |cp| %>
+            <tr>
+              <td><%= cp.checkpoint_name %></td>
+              <% team.users.each do |user| %>
+                <td><%= cp.feedbacks.where(giveuser_id: user.id).average(:score) %></td>
+              <% end %>
+            </tr>
+          <% end %>
+          <caption>Average Given Score</caption>
+        </tbody>
+      </table> 
+      </div>
+
     <% end %>
+    </div>
   <% end %>
 <% end %>

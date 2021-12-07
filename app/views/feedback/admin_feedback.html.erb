@@ -3,14 +3,17 @@
 <!-- Lets layout know what the title is-->
 <% content_for :title, "Admin Feedback"%>
 
-<%= button_to "Create New Feedback", new_feedback_path, class: "btn btn-primary", method: :get %>
-
-<% if Current.user.courses.empty? %>
-  <p>No feedbacks!</p>
-<% end %>
 
 <% Current.user.courses.each do |course| %>
-  <h3><%= course.course_name %>
+  <span>
+  <h3>Course: <%= course.course_name%></h3>
+  <%= button_to "Create New Feedback", new_feedback_path, class: "btn btn-primary", method: :get, params: {course: course.id} %>
+  </span>
+
+  <% if Current.user.courses.empty? %>
+    <p>No feedbacks!</p>
+  <% end %>
+
   <% course.teams.each do |team| %>
     <h4><%= team.team_name%></h4>
     <table class="table">
