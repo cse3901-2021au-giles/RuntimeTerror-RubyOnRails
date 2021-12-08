@@ -60,7 +60,7 @@ class FeedbackController < ApplicationController
   # GET Admin/User - Completed checkpoints
   def completed
     @checkpoint = Checkpoint.find(params[:id]) #Current checkpoint
-    unless Current.user.role == 0 || @checkpoint.team.users.include?(Current.user) 
+    unless Current.user.role == 0 || @checkpoint.team.users.include?(Current.user) || @checkpoint.feedbacks.find_by(receiveuser_id: Current.user.id)
       redirect_to feedback_path, alert: "You're not a part of this team; Unable to access feedback"
     end
     @feedbacks = (Current.user.role == 1) ? @checkpoint.feedbacks.where(done: true, receiveuser_id: Current.user.id) : @checkpoint.feedbacks.where(done: true)

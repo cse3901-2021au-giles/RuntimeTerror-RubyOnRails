@@ -4,7 +4,9 @@
 <% Current.user.courses.each do |course| %>
   <span>
   <h3>Course: <%= course.course_name%></h3>
-  <%= button_to "Create New Feedback", new_feedback_path, class: "btn btn-primary", method: :get, params: {course: course.id} %>
+  <% if !course.teams.empty?%>
+    <%= button_to "Create New Feedback", new_feedback_path, class: "btn btn-primary", method: :get, params: {course: course.id} %>
+  <% end%>
   </span>
 
   <% if Current.user.courses.empty? %>

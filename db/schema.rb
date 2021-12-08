@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_212047) do
+ActiveRecord::Schema.define(version: 2021_12_08_035044) do
 
   create_table "checkpoints", force: :cascade do |t|
     t.integer "team_id", null: false
@@ -77,8 +77,12 @@ ActiveRecord::Schema.define(version: 2021_12_07_212047) do
   end
 
   add_foreign_key "checkpoints", "teams", on_delete: :cascade
+  add_foreign_key "courses_users", "courses", on_delete: :cascade
+  add_foreign_key "courses_users", "users", on_delete: :cascade
   add_foreign_key "feedbacks", "checkpoints", on_delete: :cascade
   add_foreign_key "feedbacks", "users", column: "giveuser_id"
   add_foreign_key "feedbacks", "users", column: "receiveuser_id"
   add_foreign_key "teams", "courses", on_delete: :cascade
+  add_foreign_key "teams_users", "teams", on_delete: :cascade
+  add_foreign_key "teams_users", "users", on_delete: :cascade
 end
