@@ -95,3 +95,19 @@ Given another couple months, the team would like to continue working on this pro
 - Security and Controller Error Handling,
   This is a very important feature we plan on improving in order to make the app more robust to attack. We currently already have checks in place to ensure users do not access resources without permission, however, we want to make it so even insidious attacks done through file manipulation and other more sophisticated break attempts cannot penetrate our security.
 
+## Requirements Met
+### Required Features:
+- [x] A user should be able to submit scores and comments for all of their teammates (and only their teammates). The application should sujpport multiple peer evaluations over the semester (eg, for each project).
+- [x] An administrative interface should provide the instructor/TA with an easy, intuitive way to populate the class with names and email addresses from a roster and also create the respective teams.
+- [x] An administrative interface should give a useful view of the scores assigned within a team. Thsi view should support the instructor's need to assign scores to individuals based on these evaluations, as well as quickly detect potential problems that waqrrant intervention.
+
+### Extensions:
+- [x] Authentication/login. Peer evaluations should be connected to an authenticated user, preventing forging of evaluations
+- [ ] Admin dashboard to monitor submission of peer evaluations and simplify sending reminders or managing evaluations that are never submitted.
+- [x] Support for multiple group structures. A student may belong to multiple groups simultaneously (eg a "project group" and a "technology team" as in 3901)
+- [x] Changing enrollment. Students might add or drop the course and this should be handled cleanly by the tool.
+- [ ] Audience evaluation of presentations.
+
+
+
+
