@@ -23,10 +23,16 @@ class FeedbackController < ApplicationController
 
   # POST Admin - Create new Checkpoint and Feedbacks for selected teams
   def create
+    # Keep track whether there are teams assigned the feedback
+    teamAssigned = false
     @team_ids = params[:teams]
     # Iterate through selected teams to give feedback forms
+
+    #return
     @team_ids.each do |team_id|
       unless team_id.empty?
+        # Flag that a team was assigned the feedback
+        teamAssigned = true
         # Create a new Checkpoint for a team
         team = Team.find(team_id)
         checkpoint = team.checkpoints.create(checkpoint_params)
@@ -39,13 +45,16 @@ class FeedbackController < ApplicationController
             end
           end
         end
-      else
-        redirect_to feedback_path, alert: "Unsuccessful Feedback Creation: Must Assign to Team(s)"
-        return
       end
     end
 
-    redirect_to feedback_path, notice: 'Feedback was Successfully Created.'
+    # Redirect depending on successful feedback creation
+    if teamAssigned
+      redirect_to feedback_path, notice: 'Feedback was Successfully Created.'
+    else
+      redirect_to feedback_path, alert: "Unsuccessful Feedback Creation: Must Assign to Team(s)"
+    end
+
   end
 
   # GET Admin/User - Completed checkpoints
