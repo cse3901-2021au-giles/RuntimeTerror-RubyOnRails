@@ -79,7 +79,7 @@ The following table is a list of controllers used in the project and who contrib
 | about_controller.rb | Matt |
 | application_controller.rb | Matt |
 | courses_controller.rb | Kevin, Jack |
-| feedback_controller.rb | Luke, Matt, Jack |
+| feedback_controller.rb | Luke, Matt, Jack, Kevin |
 | main_controller.rb | Matt, Luke |
 | passwords_controller.rb | Matt |
 | registrations_controller.rb | Matt |

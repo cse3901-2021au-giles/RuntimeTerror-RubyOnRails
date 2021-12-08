@@ -1,7 +1,9 @@
 <% Current.user.courses.each do |course| %>
   <span>
   <h3>Course: <%= course.course_name%></h3>
-  <%= button_to "Create team", teams_create_path, class: "btn btn-primary", method: :get, params: {course: course.id} %>
+  <% if course.users.find_by(role: "1")%>
+    <%= button_to "Create team", teams_create_path, class: "btn btn-primary", method: :get, params: {course: course.id} %>
+  <% end%>
   </span>
   <table class="table">
     <thead>
